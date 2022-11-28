@@ -1,4 +1,3 @@
-import './App.css';
 import { useState } from 'react';
 import FirebaseAuthService from './FirebaseAuthService';
 import LoginForm from './components/LoginForm';
