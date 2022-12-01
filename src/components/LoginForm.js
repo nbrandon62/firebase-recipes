@@ -38,7 +38,7 @@ const LoginForm = ({ existingUser }) => {
 
 
   return (
-    <div>
+    <div className="ui container">
       {existingUser ? (
         <div>
           <h3>Welcome, {existingUser.email}</h3>
@@ -47,8 +47,8 @@ const LoginForm = ({ existingUser }) => {
           </button>
         </div>
       ) : (
-        <form class="ui mini form" onSubmit={handleSubmit}>
-          <div class="inline field">
+        <form className="ui mini form" onSubmit={handleSubmit}>
+          <div className="inline field">
             <label>Username</label>
             <input
               placeholder="Enter username"
@@ -59,7 +59,7 @@ const LoginForm = ({ existingUser }) => {
             />
           </div>
 
-          <div class="inline field">
+          <div className="inline field">
             <label>Password</label>
             <input
               placeholder="Enter password"
