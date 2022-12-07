@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Divider } from "semantic-ui-react"
+import { Divider } from "semantic-ui-react";
 import FirebaseAuthService from "./FirebaseAuthService";
 import LoginForm from "./components/LoginForm";
 import AddEditRecipeForm from "./components/AddEditRecipeForm";
