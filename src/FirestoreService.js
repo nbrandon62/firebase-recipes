@@ -6,8 +6,8 @@ const createDocument = ( collection, document ) => {
     return firestore.collection(collection).add(document);
 };
 
-const FirebaseFirestoreService = {
+const FirestoreService = {
     createDocument,
 }
 
-export default FirebaseFirestoreService;
+export default FirestoreService;

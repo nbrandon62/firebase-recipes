@@ -10,7 +10,10 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
   const [method, setMethod] = useState("");
   const [ingredients, setIngredients] = useState("");
 
+
   const handleRecipeSubmit = (e) => {
+    e.preventDefault();
+    
     if (ingredients.length === 0) {
       alert("Please add ingredients to the recipe before submitting");
       return;
@@ -30,8 +33,8 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
   };
 
   return (
-    <div className="ui container" onSubmit={handleRecipeSubmit}>
-      <div className="ui form">
+    <div className="ui container" >
+      <div className="ui form" onSubmit={handleRecipeSubmit}>
         <div className="fields">
           <div className="eight wide field">
             <label>Recipe Title</label>
