@@ -25,6 +25,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
       title,
       category,
       publishDate: new Date(publishDate),
+      method,
       isPublished,
       ingredients,
     };
@@ -57,9 +58,9 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option value="0">Category</option>
-              <option value="1">Vegetable</option>
-              <option value="2">Protein</option>
-              <option value="3">Starch</option>
+              <option value="vegetable">Vegetable</option>
+              <option value="protein">Protein</option>
+              <option value="starch">Starch</option>
             </select>
           </div>
         </div>

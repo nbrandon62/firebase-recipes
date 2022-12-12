@@ -12,7 +12,10 @@ function App() {
 
   const handleAddRecipe = async (newRecipe) => {
     try {
-      const response = await FirestoreService.createDocument("recipes", newRecipe);
+      const response = await FirestoreService.createDocument(
+        "recipes",
+        newRecipe
+      );
       alert(`created a recipe with an ID = ${response.id}`);
     } catch (error) {
       alert(error.message);
@@ -21,10 +24,12 @@ function App() {
 
   return (
     <div className="ui container">
-      <h1 className="ui header" >Firebase Recipes</h1>
+      <h1 className="ui header">Firebase Recipes</h1>
       <LoginForm existingUser={user} />
       <Divider />
-      <AddEditRecipeForm handleAddRecipe={handleAddRecipe} />
+      <div>
+        {user ? <AddEditRecipeForm handleAddRecipe={handleAddRecipe} /> : null}
+      </div>
     </div>
   );
 }
