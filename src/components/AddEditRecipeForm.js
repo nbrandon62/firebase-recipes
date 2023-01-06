@@ -37,7 +37,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
     <div className="ui container" >
       <div className="ui form" onSubmit={handleRecipeSubmit}>
         <div className="fields">
-          <div className="eight wide field">
+          <div className="twelve wide field">
             <label>Recipe Title</label>
             <input
               type="text"
@@ -51,7 +51,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
 
       <div className="ui form">
         <div className="fields">
-          <div className="eight wide field">
+          <div className="twelve wide field">
             <select
               className="ui dropdown"
               value={category}
@@ -68,7 +68,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
 
       <div className="ui form">
         <div className="fields">
-          <div className="eight wide field">
+          <div className="twelve wide field">
             <div className="field">
               <label>Method</label>
               <textarea
@@ -84,7 +84,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
 
       <div className="ui form">
         <div className="fields">
-          <div className="eight wide field">
+          <div className="twelve wide field">
             <div className="field">
               <label>Ingredients</label>
               <textarea
@@ -100,7 +100,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
 
       <div className="ui form">
         <div className="fields">
-          <div className="eight wide field">
+          <div className="twelve wide field">
             <div className="field">
               <label>Date</label>
               <textarea
