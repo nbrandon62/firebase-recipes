@@ -2,11 +2,21 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 
 export const RecipeCard = ({ key, title, method, category, ingredients, publishDate }) => {
+
+  const formatDate = (publishDate) => {
+    const day = publishDate.getUTCDate();
+    const month = publishDate.getUTCMonth() + 1;
+    const year = publishDate.getFullYear();
+    const dateString = `${month}/${day}/${year}`;
+
+    return dateString;
+  }
+
   return (
     <Card fluid>
     <Card.Content key={key}>
       <Card.Header>{title}</Card.Header>
-      <Card.Meta>{publishDate}</Card.Meta>
+      <Card.Meta>Published: {formatDate(publishDate)}</Card.Meta>
       <Card.Meta>{category}</Card.Meta>
       <br/>
       <Card.Header>Method</Card.Header>

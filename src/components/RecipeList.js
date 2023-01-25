@@ -10,7 +10,7 @@ const RecipeList = ({ recipes }) => {
         category={recipe.category}
         ingredients={recipe.ingredients}
         method={recipe.method}
-        publishDate={recipe.publishDate.toString()}
+        publishDate={recipe.publishDate}
       />
     );
   });
