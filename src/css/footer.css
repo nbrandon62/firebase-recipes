@@ -4,11 +4,9 @@
     padding: 5rem;
     border-top: 5px dashed black;
     background-color: #fcede4;
-}
-
-.footer-links{
     font-size: 2rem;
 }
+
 .footer-home{
     padding:.6rem;
     cursor: pointer;
