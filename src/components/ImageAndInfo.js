@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   background-color: #FFFCF2;
-
   `;
 
 const Title = styled.h1`
@@ -32,7 +31,7 @@ const ImageAndInfo = ({ image, title, description }) => {
           <Description>{description}</Description>
         </Grid.Column>
         <Grid.Column>
-
+          {/* <div className='z-index'>ABOUT</div> */}
         </Grid.Column>
       </Grid>
     </Wrapper>
