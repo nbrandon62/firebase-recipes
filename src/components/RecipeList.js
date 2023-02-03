@@ -1,6 +1,7 @@
 import React from "react";
 import { RecipeCard } from "./RecipeCard";
 
+
 const RecipeList = ({ recipes }) => {
   const renderedList = recipes.map((recipe) => {
     return (
@@ -14,7 +15,7 @@ const RecipeList = ({ recipes }) => {
       />
     );
   });
-  return <div>{renderedList}</div>;
+  return <div className="recipe-list">{renderedList}</div>;
 };
 
 export default RecipeList;

@@ -6,6 +6,7 @@ import FirestoreService from "./FirestoreService";
 import RecipeList from "./components/RecipeList";
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage";
+import { Divider } from "semantic-ui-react";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -100,7 +101,10 @@ function App() {
 
   return (
     // <Home existingUser={user} />
-    <RecipesPage recipes={recipes}/>
+    <div>
+      <RecipesPage recipes={recipes} />
+
+    </div>
     // <div className="ui container">
     //   <h1 className="ui header">Firebase Recipes</h1>
     //   <LoginForm existingUser={user} />

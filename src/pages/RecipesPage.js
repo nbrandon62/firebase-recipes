@@ -1,4 +1,5 @@
 import React from "react";
+import { Divider } from "semantic-ui-react";
 import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
 import RecipeList from "../components/RecipeList";
