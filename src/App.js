@@ -5,6 +5,7 @@ import AddEditRecipeForm from "./components/AddEditRecipeForm";
 import FirestoreService from "./FirestoreService";
 import RecipeList from "./components/RecipeList";
 import Home from "./pages/Home";
+import RecipesPage from "./pages/RecipesPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -98,7 +99,8 @@ function App() {
   FirebaseAuthService.subscribeToAuthChanges(setUser);
 
   return (
-    <Home existingUser={user} />
+    // <Home existingUser={user} />
+    <RecipesPage recipes={recipes}/>
     // <div className="ui container">
     //   <h1 className="ui header">Firebase Recipes</h1>
     //   <LoginForm existingUser={user} />

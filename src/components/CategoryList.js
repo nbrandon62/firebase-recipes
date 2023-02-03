@@ -1,7 +1,7 @@
 import React from "react";
 import CategoryCard from "./CategoryCard";
 
-import '../css/categorycard.css';
+import '../css/category.css';
 
 const categories = [
   {

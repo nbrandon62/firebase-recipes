@@ -1,0 +1,8 @@
+.recipes-container .title{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.recipes-container .card-container{
+    height: 9rem;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../css/categorycard.css";
+import "../css/category.css";
 
 const CategoryCard = ({ title, color }) => {
   return (

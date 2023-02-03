@@ -13,7 +13,7 @@ export const RecipeCard = ({ key, title, method, category, ingredients, publishD
   }
 
   return (
-    <Card fluid>
+    <Card>
     <Card.Content key={key}>
       <Card.Header>{title}</Card.Header>
       <Card.Meta>Published: {formatDate(publishDate)}</Card.Meta>
