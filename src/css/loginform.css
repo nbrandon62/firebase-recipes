@@ -2,8 +2,58 @@
    margin-left: 4rem;
 }
 .gridded{
-    background-color: #FFF7F2;
+    background-color: #fcede4;
+    position: relative;
 }
+@media (max-width: 3000px ) {
+    .z-index {
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        margin:auto;
+        z-index: 1;
+        color: black;
+        border-radius: 45%;
+        background-color: #ffc700;
+        padding: 11rem;
+        right: 0.125rem;
+      }
+}
+@media (max-width: 959px ) {
+    .z-index {
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        margin:auto;
+        z-index: 1;
+        color: black;
+        border-radius: 45%;
+        background-color: #ffc700;
+        padding: 9rem;
+        right: 0.125rem;
+      }
+}
+@media (max-width: 750px ) {
+    .z-index {
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        margin:auto;
+        z-index: 1;
+        color: black;
+        border-radius: 45%;
+        background-color: #ffc700;
+        padding: 5rem;
+        right: 0.125rem;
+      }
+}
+  
 .gridded, .ui.grid{
     margin-bottom: 0;
     padding-bottom: 4rem;

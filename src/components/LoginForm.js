@@ -93,6 +93,7 @@ const LoginForm = ({ existingUser }) => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
+       <div className="z-index"> ABOUT</div>
     </div>
   );
 };
