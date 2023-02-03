@@ -1,0 +1,15 @@
+.container{
+    background-color: #FFF7F2;
+    padding: 4rem;
+}
+
+.header{
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    color: blue;
+    padding: 12px;
+    font-weight: 900;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 90px;
+}
