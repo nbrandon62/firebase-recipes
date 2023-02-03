@@ -1,4 +1,5 @@
 import React from "react";
+import CategoryList from "../components/CategoryList";
 import Header from "../components/Header";
 import ImageAndInfo from "../components/ImageAndInfo";
 import Jumbrotron from "../components/Jumbrotron";
@@ -17,6 +18,7 @@ const Home = ({ existingUser }) => {
       <LoginForm existingUser={existingUser} />
       <ImageAndInfo  description={imageAndInfoProps.description} />
       <Jumbrotron />
+      <CategoryList />
     </div>
   );
 };
