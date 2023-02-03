@@ -1,3 +1,7 @@
+*{
+    font-family: 'Inter Tight', sans-serif;
+    /* font-size: small; */
+}
 .login-container{
    margin-left: 4rem;
 }
@@ -69,10 +73,6 @@
     width: 75%!important;
 }
 
-*{
-    font-family: 'Inter Tight', sans-serif;
-    font-size: small;
-}
 
 .ui.button{
     background-color: blue;

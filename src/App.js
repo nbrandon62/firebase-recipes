@@ -7,6 +7,7 @@ import RecipeList from "./components/RecipeList";
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage";
 import { Divider } from "semantic-ui-react";
+import Footer from "./components/Footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -100,24 +101,20 @@ function App() {
   FirebaseAuthService.subscribeToAuthChanges(setUser);
 
   return (
-    // <Home existingUser={user} />
     <div>
-      <RecipesPage recipes={recipes} />
-
+      <Home existingUser={user} />
+      <Footer user={user}/>
     </div>
-    // <div className="ui container">
-    //   <h1 className="ui header">Firebase Recipes</h1>
-    //   <LoginForm existingUser={user} />
-
-    //   <Divider />
-
-    //   {user ? <AddEditRecipeForm handleAddRecipe={handleAddRecipe} /> : null}
-
-    //   <Divider />
-
-    //   <RecipeList recipes={recipes} />
+    // <div>
+    //   <RecipesPage recipes={recipes} />
     // </div>
   );
 }
 
 export default App;
+
+//   <LoginForm existingUser={user} />
+
+//   {user ? <AddEditRecipeForm handleAddRecipe={handleAddRecipe} /> : null}
+
+//   <RecipeList recipes={recipes} />
