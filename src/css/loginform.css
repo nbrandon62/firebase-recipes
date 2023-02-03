@@ -37,7 +37,7 @@
         right: 0.125rem;
       }
 }
-@media (max-width: 750px ) {
+@media (max-width: 771px ) {
     .z-index {
         font-size: 2rem;
         display: flex;
