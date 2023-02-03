@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { Divider, Grid } from "semantic-ui-react";
 import FirebaseAuthService from "./FirebaseAuthService";
 import LoginForm from "./components/LoginForm";
 import AddEditRecipeForm from "./components/AddEditRecipeForm";
 import FirestoreService from "./FirestoreService";
 import RecipeList from "./components/RecipeList";
+import Home from "./pages/Home";
 
 function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
+  const [currentRecipe, setCurrentRecipe] = useState(null);
 
   useEffect(() => {
     fetchRecipes()
@@ -67,29 +68,49 @@ function App() {
     }
   };
 
+  const handleUpdateRecipe = async (newRecipe, recipeId) => {
+    try {
+      await FirestoreService.updateDocument("recipes", recipeId, newRecipe);
+      handleFetchRecipes();
+
+      alert(`successfully updated the recipe with the id: ${recipeId}`);
+      setCurrentRecipe(null);
+    } catch (error) {
+      alert(error.message);
+      throw error;
+    }
+  };
+
+  const handleEditRecipeClick = (recipeId) => {
+    const selectedRecipe = recipes.find((recipe) => {
+      return recipe.id === recipeId;
+    });
+
+    if (selectedRecipe) {
+      setCurrentRecipe(selectedRecipe);
+    }
+  };
+
+  const handleEditRecipeCancel = () => {
+    setCurrentRecipe(null);
+  };
+
   FirebaseAuthService.subscribeToAuthChanges(setUser);
 
   return (
-    <div className="ui container">
-      <h1 className="ui header">Firebase Recipes</h1>
-      <LoginForm existingUser={user} />
+    <Home existingUser={user} />
+    // <div className="ui container">
+    //   <h1 className="ui header">Firebase Recipes</h1>
+    //   <LoginForm existingUser={user} />
 
-      <Divider />
+    //   <Divider />
 
-      <Grid columns={2} divided>
-        <Grid.Row stretched>
-          <Grid.Column>
-            {user ? (
-              <AddEditRecipeForm handleAddRecipe={handleAddRecipe} />
-            ) : null}
-          </Grid.Column>
-          <Grid.Column>
-            {user ? <RecipeList recipes={recipes} /> : null}
+    //   {user ? <AddEditRecipeForm handleAddRecipe={handleAddRecipe} /> : null}
 
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </div>
+    //   <Divider />
+
+    //   <RecipeList recipes={recipes} />
+    // </div>
   );
 }
 
