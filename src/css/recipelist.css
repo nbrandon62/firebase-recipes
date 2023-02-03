@@ -6,3 +6,14 @@
 .recipes-container .card-container{
     height: 9rem;
 }
+
+.recipe-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fcede4;
+}
+
+.recipe-list .ui.card{
+    margin: 1em 0;
+}
