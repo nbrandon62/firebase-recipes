@@ -1,0 +1,26 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 5rem;
+    border-top: 5px dashed black;
+    background-color: #fcede4;
+}
+
+.footer-links{
+    font-size: 2rem;
+}
+.footer-home{
+    padding:.6rem;
+    cursor: pointer;
+}
+.footer-submit{
+    padding:.6rem;
+    cursor: pointer;
+}
+.footer-home:hover{
+    text-decoration: underline;
+
+}
+.footer-submit:hover{
+    text-decoration: underline;
+}
