@@ -1,0 +1,30 @@
+.login-container{
+   margin-left: 4rem;
+}
+.gridded{
+    background-color: #FFF7F2;
+}
+.gridded, .ui.grid{
+    margin-bottom: 0;
+    padding-bottom: 4rem;
+
+}
+
+.ui.fluid.image{
+    margin-left: 3rem;
+    width: 100%;
+}
+
+.ui.mini.form, .ui.form .eight.wide.field {
+    width: 75%!important;
+}
+
+*{
+    font-family: 'Inter Tight', sans-serif;
+    font-size: small;
+}
+
+.ui.button{
+    background-color: blue;
+    color: white;
+}
