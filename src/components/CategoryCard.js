@@ -2,10 +2,18 @@ import React from "react";
 
 import "../css/category.css";
 
-const CategoryCard = ({ title, color }) => {
+const CategoryCard = ({
+  title,
+  color,
+  filter,
+  categoryFilter,
+  handleCategoryFilter,
+}) => {
   return (
-    <div className="card-container">
-      <div className="title" style={{ backgroundColor: `${color}`}}>
+    <div className="card-container"
+    onClick={() => handleCategoryFilter(filter)}
+    >
+      <div className="title" style={{ backgroundColor: `${color}` }}>
         {title}
       </div>
     </div>

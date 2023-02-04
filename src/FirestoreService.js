@@ -1,23 +1,35 @@
-import firebase from './FirebaseConfig';
+import firebase from "./FirebaseConfig";
 
 const firestore = firebase.firestore();
 
-const createDocument = ( collection, document ) => {
-    return firestore.collection(collection).add(document);
+const createDocument = (collection, document) => {
+  return firestore.collection(collection).add(document);
 };
 
-const readDocuments = (collection) => {
-    return firestore.collection(collection).get();
+const readDocuments = ({ collection, queries }) => {
+  let collectionRef = firestore.collection(collection);
+
+  if (queries > 0) {
+    for (const query of queries) {
+      collectionRef = collectionRef.where(
+        query.field,
+        query.condition,
+        query.value
+      );
+    }
+  }
+
+  return collectionRef.get();
 };
 
 const updateDocument = (collection, id, document) => {
-    return firestore.collection(collection).doc(id).update(document);
-}
+  return firestore.collection(collection).doc(id).update(document);
+};
 
 const FirestoreService = {
-    createDocument,
-    readDocuments,
-    updateDocument,
-}
+  createDocument,
+  readDocuments,
+  updateDocument,
+};
 
 export default FirestoreService;

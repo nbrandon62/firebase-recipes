@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import FirebaseAuthService from "./FirebaseAuthService";
-import LoginForm from "./components/LoginForm";
-import AddEditRecipeForm from "./components/AddEditRecipeForm";
 import FirestoreService from "./FirestoreService";
-import RecipeList from "./components/RecipeList";
+
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage";
-import { Divider } from "semantic-ui-react";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [currentRecipe, setCurrentRecipe] = useState(null);
+  const [categoryFilter, setCategoryFilter] = useState("");
 
   useEffect(() => {
     fetchRecipes()
@@ -23,13 +22,28 @@ function App() {
         console.error(error.message);
         throw error;
       });
-  }, [user]);
+
+      console.log(categoryFilter)
+  }, [user, categoryFilter]);
 
   const fetchRecipes = async () => {
+    const queries = [];
+
+    if (categoryFilter) {
+      queries.push({
+        field: "category",
+        condition: "==",
+        value: categoryFilter,
+      });
+    }
+
     let fetchedRecipes = [];
 
     try {
-      const response = await FirestoreService.readDocuments("recipes");
+      const response = await FirestoreService.readDocuments({
+        collection: "recipes",
+        queries: "queries",
+      });
 
       const newRecipes = response.docs.map((recipeDoc) => {
         const id = recipeDoc.id;
@@ -102,12 +116,15 @@ function App() {
 
   return (
     <div>
-      <Home existingUser={user} />
-      <Footer user={user}/>
+      <Header />
+      {/* <Home existingUser={user} /> */}
+      <RecipesPage
+        recipes={recipes}
+        categoryFilter={categoryFilter}
+        handleCategoryFilter={setCategoryFilter}
+      />
+      <Footer user={user} />
     </div>
-    // <div>
-    //   <RecipesPage recipes={recipes} />
-    // </div>
   );
 }
 

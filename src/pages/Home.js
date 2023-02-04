@@ -1,6 +1,5 @@
 import React from "react";
 import CategoryList from "../components/CategoryList";
-import Header from "../components/Header";
 import ImageAndInfo from "../components/ImageAndInfo";
 import Jumbrotron from "../components/Jumbrotron";
 import LoginForm from "../components/LoginForm";
@@ -14,7 +13,6 @@ const imageAndInfoProps = {
 const Home = ({ existingUser }) => {
   return (
     <div>
-      <Header />
       <LoginForm existingUser={existingUser} />
       <ImageAndInfo  description={imageAndInfoProps.description} />
       <Jumbrotron />

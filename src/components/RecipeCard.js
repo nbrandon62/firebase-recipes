@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
 
-export const RecipeCard = ({ key, title, method, category, ingredients, publishDate }) => {
+export const RecipeCard = ({  title, method, category, ingredients, publishDate }) => {
 
   const formatDate = (publishDate) => {
     const day = publishDate.getUTCDate();
@@ -14,7 +14,7 @@ export const RecipeCard = ({ key, title, method, category, ingredients, publishD
 
   return (
     <Card>
-    <Card.Content key={key}>
+    <Card.Content>
       <Card.Header>{title}</Card.Header>
       <Card.Meta>Published: {formatDate(publishDate)}</Card.Meta>
       <Card.Meta>{category}</Card.Meta>

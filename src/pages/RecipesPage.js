@@ -1,17 +1,17 @@
 import React from "react";
-import { Divider } from "semantic-ui-react";
 import CategoryList from "../components/CategoryList";
-import Header from "../components/Header";
 import RecipeList from "../components/RecipeList";
 
-import '../css/recipelist.css'
+import "../css/recipelist.css";
 
-const RecipesPage = ({ recipes }) => {
+const RecipesPage = ({ recipes, categoryFilter, handleCategoryFilter }) => {
   return (
     <div>
-      <Header />
       <div className="recipes-container">
-        <CategoryList />
+        <CategoryList
+          handleCategoryFilter={handleCategoryFilter}
+          categoryFilter={categoryFilter}
+        />
       </div>
       <RecipeList recipes={recipes} />
     </div>
