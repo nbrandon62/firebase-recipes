@@ -1,31 +1,88 @@
 .recipe-form-container {
-    background-color: #fcede4;
-    padding:7rem;
+  background-color: #fcede4;
+  padding: 12rem;
 }
-.recipe-form-header{
-    background-color: #fcede4;
-    width: 100%;
+.recipe-form-header {
+  background-color: #fcede4;
+  width: 100%;
+  /* position: relative; */
+}
+.form-header {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.form-subheader {
     position: relative;
+  }
+
+@media (max-width: 3000px) {
+  .form-instruction {
+    width: 25%;
+    position: absolute;
+    top: 1rem;
+    left: 20rem;
+  }
+  .form-instruction-2 {
+    width: 25%;
+    position: absolute;
+    top: 4em;
+    right: 20rem;
+  }
 }
-.form-header{
-    /* margin-left: 10rem;
-    padding: 2rem; */
-    width: auto;
-    display: flex;
-    justify-content: space-around;
-}
-.form-instruction{
+@media (max-width: 1073px) {
+  .form-instruction {
+    position: absolute;
     width: 40%;
-    display: flex;
-    /* top:4rem;
-    right: 4rem;
-    position: absolute; */
+
+  }
+  .form-instruction-2 {
+    width: 35%;
+    position: absolute;
+  }
 }
-.form-instruction-2{
-    width: 40%;
-    display: flex;
+@media (max-width: 727px) {
+  .form-instruction {
+    position: absolute;
+    width: 45%;
+    top: 1rem;
+    left: 200px;
+  }
+  .form-instruction-2 {
+    width: 35%;
+    position: absolute;
+    left: 200px;
+  }
 
 }
-.ui.form, .ui.form .fields{
-    justify-content: center;
+@media (max-width: 623px) {
+  .form-instruction {
+    position: absolute;
+    width: 50%;
+    top: 1rem;
+    left: 120px;
+  }
+  .form-instruction-2 {
+    width: 35%;
+    position: absolute;
+    left: 120px;
+  }
+  
 }
+
+.ui.form,
+.ui.form .fields {
+  justify-content: center;
+}
+
+.fields .ui.button{
+    margin-top: 1rem;
+    padding-left: 2rem ;
+    padding-right: 2rem ;
+}
+
+/* .ui.form .fields .ui.button{
+    display: flex;
+    justify-content: center;
+} */
