@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import FirebaseAuthService from "./FirebaseAuthService";
 import FirestoreService from "./FirestoreService";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import CreateRecipePage from "./pages/CreateRecipePage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,7 +25,7 @@ function App() {
         throw error;
       });
 
-      console.log(categoryFilter)
+    console.log(categoryFilter);
   }, [user, categoryFilter]);
 
   const fetchRecipes = async () => {
@@ -115,16 +117,30 @@ function App() {
   FirebaseAuthService.subscribeToAuthChanges(setUser);
 
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      {/* <Home existingUser={user} /> */}
-      <RecipesPage
-        recipes={recipes}
-        categoryFilter={categoryFilter}
-        handleCategoryFilter={setCategoryFilter}
-      />
+
+      <Routes>
+        <Route path="/" exact element={<Home existingUser={user} />} />
+        <Route
+          path="/recipes"
+          exact
+          element={
+            <RecipesPage
+              recipes={recipes}
+              categoryFilter={categoryFilter}
+              handleCategoryFilter={setCategoryFilter}
+            />
+          }
+        />
+        <Route
+          path="/create"
+          exact
+          element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
+        />
+      </Routes>
       <Footer user={user} />
-    </div>
+    </BrowserRouter>
   );
 }
 
