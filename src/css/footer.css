@@ -10,15 +10,18 @@
 .footer-home{
     padding:.6rem;
     cursor: pointer;
+    color:black;
 }
 .footer-submit{
     padding:.6rem;
     cursor: pointer;
+    color:black;
 }
 .footer-home:hover{
     text-decoration: underline;
-
+    color: black;
 }
 .footer-submit:hover{
     text-decoration: underline;
+    color: black;
 }
