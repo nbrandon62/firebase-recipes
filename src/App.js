@@ -119,25 +119,26 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-
       <Routes>
-        <Route path="/" exact element={<Home existingUser={user} />} />
-        <Route
-          path="/recipes"
-          exact
-          element={
-            <RecipesPage
-              recipes={recipes}
-              categoryFilter={categoryFilter}
-              handleCategoryFilter={setCategoryFilter}
-            />
-          }
-        />
-        <Route
-          path="/create"
-          exact
-          element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
-        />
+ 
+          <Route path="/" exact element={<Home existingUser={user} />} />
+          <Route
+            path="/recipes"
+            exact
+            element={
+              <RecipesPage
+                recipes={recipes}
+                categoryFilter={categoryFilter}
+                handleCategoryFilter={setCategoryFilter}
+              />
+            }
+          />
+          <Route
+            path="/create"
+            exact
+            element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
+          />
+
       </Routes>
       <Footer user={user} />
     </BrowserRouter>

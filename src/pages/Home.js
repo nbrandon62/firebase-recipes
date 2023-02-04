@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CategoryList from "../components/CategoryList";
 import ImageAndInfo from "../components/ImageAndInfo";
 import Jumbrotron from "../components/Jumbrotron";
@@ -11,6 +11,10 @@ const imageAndInfoProps = {
 };
 
 const Home = ({ existingUser }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div>
       <LoginForm existingUser={existingUser} />
