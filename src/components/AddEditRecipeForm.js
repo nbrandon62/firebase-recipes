@@ -117,11 +117,11 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
             </div>
           </div>
         </div>
-      </div>
-
-      <button className="ui button primary" onClick={handleRecipeSubmit}>
+      <button className="ui button" onClick={handleRecipeSubmit}>
         Add Recipe
       </button>
+      </div>
+
     </div>
   );
 };
