@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../css/category.css";
 
@@ -10,13 +11,16 @@ const CategoryCard = ({
   handleCategoryFilter,
 }) => {
   return (
-    <div className="card-container"
-    onClick={() => handleCategoryFilter(filter)}
-    >
-      <div className="title" style={{ backgroundColor: `${color}` }}>
-        {title}
+    <Link to='/recipes'>
+      <div
+        className="card-container"
+        onClick={() => handleCategoryFilter(filter)}
+      >
+        <div className="title" style={{ backgroundColor: `${color}` }}>
+          {title}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
