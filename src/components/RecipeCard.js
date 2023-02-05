@@ -1,8 +1,15 @@
-import React from 'react';
-import { Card } from 'semantic-ui-react';
+import React from "react";
 
-export const RecipeCard = ({  title, method, category, ingredients, publishDate }) => {
 
+import "../css/recipecard.css";
+
+export const RecipeCard = ({
+  title,
+  method,
+  category,
+  ingredients,
+  publishDate,
+}) => {
   const formatDate = (publishDate) => {
     const day = publishDate.getUTCDate();
     const month = publishDate.getUTCMonth() + 1;
@@ -10,25 +17,19 @@ export const RecipeCard = ({  title, method, category, ingredients, publishDate 
     const dateString = `${month}/${day}/${year}`;
 
     return dateString;
-  }
+  };
 
   return (
-    <Card>
-    <Card.Content>
-      <Card.Header>{title}</Card.Header>
-      <Card.Meta>Published: {formatDate(publishDate)}</Card.Meta>
-      <Card.Meta>{category}</Card.Meta>
-      <br/>
-      <Card.Header>Method</Card.Header>
-      <Card.Description>
-        {method}
-      </Card.Description>
-      <br/>
-      <Card.Header>Ingredients</Card.Header>
-      <Card.Description>
-        {ingredients}
-      </Card.Description>
-    </Card.Content>
-    </Card>
-  )
-}
+    <div className="recipe-card">
+      <h3 className="recipe-title">{title}</h3>
+      <div className="column">
+        <h3 className="recipe-title">ingredients:</h3>
+        <li>{ingredients}</li>
+      </div>
+      <div className="column">
+        <h3 className="recipe-title">method:</h3>
+        <p>{method}</p>
+      </div>
+    </div>
+  );
+};

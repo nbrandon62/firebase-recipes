@@ -1,8 +1,20 @@
 .card-list{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     background-color: #fcede4;
+}
+
+@media (max-width: 712px){
+    .card-list{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        background-color: #fcede4;
+    }
+
 }
 
 .card-container {
