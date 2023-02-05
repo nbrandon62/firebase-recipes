@@ -6,14 +6,35 @@
 .recipes-container .card-container{
     height: 9rem;
 }
+@media (max-width: 712px){
+    .recipes-container .card-container{
+        height: 5rem;
+    }
+}
 
 .recipe-list{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+    /* margin:-10px; */
+    /* gap: column-gap; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     background-color: #fcede4;
+}
+.recipe-list>*{
+    flex: 1 1 160px;
+    margin: 10px;
 }
 
 .recipe-list .ui.card{
     margin: 1em 0;
+    margin: 10px;
+    padding: 2rem;
+}
+
+.recipe-list .ui.card>.content, .ui.cards>.card>.content {
+    padding: 0;
 }
