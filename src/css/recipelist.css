@@ -17,9 +17,10 @@
     justify-content: center;
     flex-wrap: wrap;
     background-color: #fcede4;
+    margin: -5px;
 }
 .recipe-list>*{
-    flex: 1 1 160px;
+    flex: 0 1 160px;
     margin: 10px;
 }
 
