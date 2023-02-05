@@ -80,7 +80,8 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
                  - sear
                  - saute
                  - salt
-                 Else, just write out a paragraph chez panisse style. "
+                 Else, just write out a paragraph Chez Panisse style: 
+                 Shell the beans. Put them in a large pot and cover with water by 2 inches. Add a splash of olive oil, a big pinch of salt, the bay leaf, a sprig of rosemary. Bring to a boil, reduce to a simmer, and cook gently for 30 to 45 minutes, until the beans are tender throughout. Taste one to ensure that they are cooked through."
                 type="text"
                 value={method}
                 onChange={(e) => setMethod(e.target.value)}
