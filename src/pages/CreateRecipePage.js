@@ -33,8 +33,8 @@ const CreateRecipePage = ({ handleAddRecipe }) => {
           </Grid.Column>
           <Grid.Column>
             <p className="form-p2">
-              For the ingredients, enter rough amounts by measurement, whether it's cups, tablespoons, grams, etc  as long as you separate them by
-              comma. The card will reformat it to a bulleted list.
+              For the ingredients, enter rough amounts by measurement. Whether it's cups, tablespoons, grams, etc  as long as you separate them by
+              comma the card will reformat it to a bulleted list.
             </p>
           </Grid.Column>
           <Grid.Column>

@@ -17,9 +17,14 @@
     padding-bottom: 2rem;
 }
 
-.form-p1:first-child {
+.form-p1{
   margin-top: 0;
-  margin-left: 1em;
+  margin-left: 4em;
+  color: rgb(236, 134, 0);
+}
+
+.form-p3{
+  margin-right: 2em;
 }
 
 .ui.form,

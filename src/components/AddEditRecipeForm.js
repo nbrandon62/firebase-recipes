@@ -76,7 +76,11 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
             <div className="field">
               <label>Method</label>
               <textarea
-                placeholder="Write out method in paragraph form..."
+                placeholder="For a numbered list, hyphenate each step like so:
+                 - sear
+                 - saute
+                 - salt
+                 Else, just write out a paragraph chez panisse style. "
                 type="text"
                 value={method}
                 onChange={(e) => setMethod(e.target.value)}
@@ -92,7 +96,12 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
             <div className="field">
               <label>Ingredients</label>
               <textarea
-                placeholder="Please separate ingredients by comma like so: milk, flour, sugar, etc..."
+                placeholder="Please separate ingredients by comma like so: milk, flour, sugar, etc...
+                or: 
+                milk,
+                flour,
+                sugar,
+                "
                 type="text"
                 value={ingredients}
                 onChange={(e) => setIngredients(e.target.value)}
