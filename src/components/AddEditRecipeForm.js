@@ -76,7 +76,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
             <div className="field">
               <label>Method</label>
               <textarea
-                placeholder="Write out method here..."
+                placeholder="Write out method in paragraph form..."
                 type="text"
                 value={method}
                 onChange={(e) => setMethod(e.target.value)}
@@ -92,7 +92,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
             <div className="field">
               <label>Ingredients</label>
               <textarea
-                placeholder="List ingredients..."
+                placeholder="Please separate ingredients by comma like so: milk, flour, sugar, etc..."
                 type="text"
                 value={ingredients}
                 onChange={(e) => setIngredients(e.target.value)}
