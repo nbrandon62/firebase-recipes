@@ -17,6 +17,14 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
       alert("Please add ingredients to the recipe before submitting");
       return;
     }
+    if (method.length === 0) {
+      alert("Please add method to the recipe before submitting");
+      return;
+    }
+    if (title.length === 0) {
+      alert("Please add title to the recipe before submitting");
+      return;
+    }
 
     const isPublished = new Date(publishDate) <= new Date() ? true : false;
 
