@@ -1,6 +1,12 @@
 .recipe-title{
     text-decoration: underline;
-    margin-left: .5rem;
+    margin-left: .7rem;
+    margin: calc(2rem - .14285714em) 0 .5rem;
+}
+.recipe-header{
+    text-decoration: underline;
+    margin-left: .7rem;
+    margin:calc(2rem - .14285714em) .5rem 0rem;
 }
 .recipe-card{
     border: 1.75px solid black;

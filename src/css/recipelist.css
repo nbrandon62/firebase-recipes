@@ -33,3 +33,8 @@
 .recipe-list .ui.card>.content, .ui.cards>.card>.content {
     padding: 0;
 }
+
+.recipe-method{
+    padding-inline-start: 15px;
+    margin-block-start: 0;
+}

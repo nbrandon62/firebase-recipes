@@ -1,11 +1,9 @@
 .recipe-form-container {
   background-color: #fcede4;
-  padding: 12rem;
 }
 .recipe-form-header {
-  background-color: #fcede4;
   width: 100%;
-  /* position: relative; */
+  text-decoration: underline;
 }
 .form-header {
   width: auto;
@@ -14,8 +12,11 @@
 }
 
 .form-subheader {
-    position: relative;
-  }
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
 
 @media (max-width: 3000px) {
   .form-instruction {
@@ -75,6 +76,10 @@
 .ui.form .fields {
   justify-content: center;
 }
+.ui.form .fields:last-child {
+  margin: 0 -.5em 0em;
+  padding-bottom: 2em;
+}
 
 .fields .ui.button{
     margin-top: 1rem;
@@ -85,4 +90,5 @@
 /* .ui.form .fields .ui.button{
     display: flex;
     justify-content: center;
+    0 -.5em 0em
 } */
