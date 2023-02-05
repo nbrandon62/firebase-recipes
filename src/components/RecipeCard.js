@@ -22,13 +22,13 @@ export const RecipeCard = ({
   return (
     <div className="recipe-card">
       <h3 className="recipe-title">{title}</h3>
-      <div className="column">
+      <div className="recipe-column">
         <h3 className="recipe-title">ingredients:</h3>
         <li>{ingredients}</li>
       </div>
-      <div className="column">
+      <div className="recipe-column">
         <h3 className="recipe-title">method:</h3>
-        <p>{method}</p>
+        <p className="recipe-method">{method}</p>
       </div>
     </div>
   );
