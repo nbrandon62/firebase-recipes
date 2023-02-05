@@ -17,64 +17,16 @@
     padding-bottom: 2rem;
 }
 
-
-@media (max-width: 3000px) {
-  .form-instruction {
-    width: 25%;
-    position: absolute;
-    top: 1rem;
-    left: 20rem;
-  }
-  .form-instruction-2 {
-    width: 25%;
-    position: absolute;
-    top: 4em;
-    right: 20rem;
-  }
-}
-@media (max-width: 1073px) {
-  .form-instruction {
-    position: absolute;
-    width: 40%;
-
-  }
-  .form-instruction-2 {
-    width: 35%;
-    position: absolute;
-  }
-}
-@media (max-width: 727px) {
-  .form-instruction {
-    position: absolute;
-    width: 45%;
-    top: 1rem;
-    left: 200px;
-  }
-  .form-instruction-2 {
-    width: 35%;
-    position: absolute;
-    left: 200px;
-  }
-
-}
-@media (max-width: 623px) {
-  .form-instruction {
-    position: absolute;
-    width: 50%;
-    top: 1rem;
-    left: 120px;
-  }
-  .form-instruction-2 {
-    width: 35%;
-    position: absolute;
-    left: 120px;
-  }
-  
+.form-p1:first-child {
+  margin-top: 0;
+  margin-left: 1em;
 }
 
 .ui.form,
 .ui.form .fields {
   justify-content: center;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .ui.form .fields:last-child {
   margin: 0 -.5em 0em;
