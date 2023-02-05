@@ -2,10 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { Grid, Image } from "semantic-ui-react";
 import FirebaseAuthService from "../FirebaseAuthService";
+import { Link } from "react-router-dom";
 
+import ScrollBottomButton from '../components/ScrollBottomButton';
 import "../css/loginform.css";
 import chef3 from "../images/chef3.avif";
-import { Link } from "react-router-dom";
 
 const LoginForm = ({ existingUser }) => {
   const [username, setUsername] = useState("");
@@ -66,6 +67,7 @@ const LoginForm = ({ existingUser }) => {
                   <button className="ui button logout" onClick={handleLogout}>
                     Logout
                   </button>
+                  <ScrollBottomButton />
                 </form>
               ) : (
                 <form className="ui mini form" onSubmit={handleSubmit}>
@@ -94,6 +96,8 @@ const LoginForm = ({ existingUser }) => {
                   </div>
 
                   <button className="ui button">Login</button>
+                  <ScrollBottomButton />
+
                 </form>
               )}
             </div>
