@@ -7,6 +7,7 @@ const RecipeList = ({ recipes }) => {
     return (
       <RecipeCard
         key={recipe.id}
+        id={recipe.id}
         title={recipe.title}
         category={recipe.category}
         ingredients={recipe.ingredients}

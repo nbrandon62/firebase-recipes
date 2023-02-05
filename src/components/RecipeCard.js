@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import "../css/recipecard.css";
 
 export const RecipeCard = ({
@@ -9,6 +8,7 @@ export const RecipeCard = ({
   category,
   ingredients,
   publishDate,
+  id
 }) => {
   const formatDate = (publishDate) => {
     const day = publishDate.getUTCDate();
@@ -20,6 +20,7 @@ export const RecipeCard = ({
   };
 
   return (
+
     <div className="recipe-card">
       <h3 className="recipe-title">{title}</h3>
       <div className="recipe-column">
@@ -31,5 +32,6 @@ export const RecipeCard = ({
         <p className="recipe-method">{method}</p>
       </div>
     </div>
+
   );
 };

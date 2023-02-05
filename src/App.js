@@ -8,12 +8,14 @@ import RecipesPage from "./pages/RecipesPage";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import CreateRecipePage from "./pages/CreateRecipePage";
+import SingleRecipePage from "./pages/SingleRecipePage";
 
 function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("");
+
 
   useEffect(() => {
     fetchRecipes()
@@ -134,11 +136,15 @@ function App() {
             }
           />
           <Route
-            path="/create"
+            path="/create-recipes-admin-only"
             exact
             element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
           />
-
+          <Route 
+          path='/recipe/:id'
+          exact
+          element={<SingleRecipePage />}
+          />
       </Routes>
       <Footer user={user} />
     </BrowserRouter>

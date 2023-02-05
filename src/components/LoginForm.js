@@ -59,7 +59,7 @@ const LoginForm = ({ existingUser }) => {
                     You are now able to create, edit, and delete recipes
                   </label>
                   <br />
-                  <Link to='/create'>
+                  <Link to='/create-recipes-admin-only'>
                     <button className="ui button create">
                       Create A New Recipe
                     </button>
