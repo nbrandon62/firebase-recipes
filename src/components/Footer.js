@@ -11,7 +11,7 @@ const Footer = ({ user }) => {
         <Link to="/recipes">
           <div className="footer-home">Recipes</div>
         </Link>
-        <Link to="/create">
+        <Link to="/create-recipes-admin-only">
           {user ? <div className="footer-submit">Submit</div> : null}
         </Link>
       </div>
