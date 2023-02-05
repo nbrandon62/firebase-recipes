@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TfiYoutube } from "react-icons/tfi";
 
 import "../css/footer.css";
 
@@ -7,12 +8,18 @@ const Footer = ({ user }) => {
   return (
     <div className="footer">
       <div className="footer-links">
-        <Link to="/">
-          <div className="footer-home">Home</div>
+        <Link to="/recipes">
+          <div className="footer-home">Recipes</div>
         </Link>
-        <Link to='/create' >{user ? <div className="footer-submit">Submit</div> : null}</Link>
+        <Link to="/create">
+          {user ? <div className="footer-submit">Submit</div> : null}
+        </Link>
       </div>
-      <div className="footer-icon">Icon</div>
+      <Link to="https://www.youtube.com/">
+        <div className="footer-icon">
+          <TfiYoutube />
+        </div>
+      </Link>
     </div>
   );
 };
