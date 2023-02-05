@@ -13,12 +13,6 @@
 }
 
 .recipe-list{
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around; */
-    /* margin:-10px; */
-    /* gap: column-gap; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

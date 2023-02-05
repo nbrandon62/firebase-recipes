@@ -5,6 +5,7 @@ import FirebaseAuthService from "../FirebaseAuthService";
 
 import "../css/loginform.css";
 import chef3 from "../images/chef3.avif";
+import { Link } from "react-router-dom";
 
 const LoginForm = ({ existingUser }) => {
   const [username, setUsername] = useState("");
@@ -52,11 +53,17 @@ const LoginForm = ({ existingUser }) => {
             <div className="login-container">
               {existingUser ? (
                 <form className="ui mini form">
-                  <h3>Welcome, </h3>
+                  <h1>Welcome, </h1>
                   <label>
                     You are now able to create, edit, and delete recipes
                   </label>
-                  <button className="ui button" onClick={handleLogout}>
+                  <br />
+                  <Link to='/create'>
+                    <button className="ui button create">
+                      Create A New Recipe
+                    </button>
+                  </Link>
+                  <button className="ui button logout" onClick={handleLogout}>
                     Logout
                   </button>
                 </form>
@@ -93,7 +100,7 @@ const LoginForm = ({ existingUser }) => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-       <div className="z-index"> ABOUT</div>
+      <div className="z-index"> ABOUT</div>
     </div>
   );
 };

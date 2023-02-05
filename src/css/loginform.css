@@ -2,6 +2,19 @@
     font-family: 'Inter Tight', sans-serif;
     /* font-size: small; */
 }
+.ui.button{
+    background-color: rgb(68, 0, 255);
+    color: white;
+}
+.ui.button.logout{
+    background-color: rgb(104, 104, 104);
+    color: white;
+}
+.ui.button.create{
+    background-color: rgb(51, 0, 236);
+    color: white;
+    margin-bottom: .9rem;
+}
 
 .login-container{
    margin-left: 4rem;
@@ -74,8 +87,3 @@
     width: 75%!important;
 }
 
-
-.ui.button{
-    background-color: blue;
-    color: white;
-}
