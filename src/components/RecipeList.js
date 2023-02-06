@@ -1,11 +1,11 @@
 import React from "react";
 import { RecipeCard } from "./RecipeCard";
 
-
-const RecipeList = ({ recipes }) => {
+const RecipeList = ({ recipes, user, handleDeleteRecipe }) => {
   const renderedList = recipes.map((recipe) => {
     return (
       <RecipeCard
+        user={user}
         key={recipe.id}
         id={recipe.id}
         title={recipe.title}
@@ -13,6 +13,7 @@ const RecipeList = ({ recipes }) => {
         ingredients={recipe.ingredients}
         method={recipe.method}
         publishDate={recipe.publishDate}
+        handleDeleteRecipe={handleDeleteRecipe}
       />
     );
   });

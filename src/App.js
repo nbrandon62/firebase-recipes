@@ -15,7 +15,7 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("");
-
+  const [recipesPerPage, setRecipesPerPage] = useState(2);
 
   useEffect(() => {
     fetchRecipes()
@@ -27,10 +27,10 @@ function App() {
         throw error;
       });
 
-    console.log(categoryFilter);
-  }, [user, categoryFilter]);
+    // console.log(categoryFilter);
+  }, [user, categoryFilter, recipesPerPage]);
 
-  const fetchRecipes = async () => {
+  const fetchRecipes = async (cursorId = "") => {
     const queries = [];
 
     if (categoryFilter) {
@@ -43,31 +43,33 @@ function App() {
 
     let fetchedRecipes = [];
 
-    try {
-      const response = await FirestoreService.readDocuments({
-        collection: "recipes",
-        queries: "queries",
-      });
+    const response = await FirestoreService.readDocuments({
+      collection: "recipes",
+      queries: queries,
+      perPage: recipesPerPage,
+      cursorId: cursorId,
+    });
 
-      const newRecipes = response.docs.map((recipeDoc) => {
-        const id = recipeDoc.id;
-        const data = recipeDoc.data();
-        data.publishDate = new Date(data.publishDate.seconds * 1000);
+    const newRecipes = response.docs.map((recipeDoc) => {
+      const id = recipeDoc.id;
+      const data = recipeDoc.data();
+      data.publishDate = new Date(data.publishDate.seconds * 1000);
 
-        return { ...data, id };
-      });
+      return { ...data, id };
+    });
 
+    if (cursorId) {
+      fetchedRecipes = [...recipes, ...newRecipes];
+    } else {
       fetchedRecipes = [...newRecipes];
-    } catch (error) {
-      console.error(error.message);
-      throw error;
     }
+
     return fetchedRecipes;
   };
 
-  const handleFetchRecipes = async () => {
+  const handleFetchRecipes = async (cursorId = "") => {
     try {
-      const fetchedRecipes = await fetchRecipes();
+      const fetchedRecipes = await fetchRecipes(cursorId);
       setRecipes(fetchedRecipes);
     } catch (error) {
       console.error(error.message);
@@ -76,30 +78,35 @@ function App() {
   };
 
   const handleAddRecipe = async (newRecipe) => {
-    try {
-      const response = await FirestoreService.createDocument(
-        "recipes",
-        newRecipe
-      );
+    const response = await FirestoreService.createDocument(
+      "recipes",
+      newRecipe
+    );
 
-      handleFetchRecipes();
-      alert(`created a recipe with an ID = ${response.id}`);
-    } catch (error) {
-      alert(error.message);
-    }
+    handleFetchRecipes();
+    alert(`created a recipe with an ID = ${response.id}`);
+  };
+
+  const handleRecipesPerPageChange = (event) => {
+    const recipesPerPage = event.target.value;
+
+    setRecipes([]);
+    setRecipesPerPage(recipesPerPage);
+  };
+
+  const handleLoadMoreRecipesClick = () => {
+    const lastRecipe = recipes[recipes.length - 1];
+    const cursorId = lastRecipe.id;
+
+    handleFetchRecipes(cursorId);
   };
 
   const handleUpdateRecipe = async (newRecipe, recipeId) => {
-    try {
-      await FirestoreService.updateDocument("recipes", recipeId, newRecipe);
-      handleFetchRecipes();
+    await FirestoreService.updateDocument("recipes", recipeId, newRecipe);
+    handleFetchRecipes();
 
-      alert(`successfully updated the recipe with the id: ${recipeId}`);
-      setCurrentRecipe(null);
-    } catch (error) {
-      alert(error.message);
-      throw error;
-    }
+    alert(`successfully updated the recipe with the id: ${recipeId}`);
+    setCurrentRecipe(null);
   };
 
   const handleEditRecipeClick = (recipeId) => {
@@ -112,8 +119,16 @@ function App() {
     }
   };
 
-  const handleEditRecipeCancel = () => {
-    setCurrentRecipe(null);
+  const handleDeleteRecipe = async (recipeId) => {
+    const deleteConfirmation = window.confirm(
+      "Are you sure you want to delete this recipe?"
+    );
+
+    if (deleteConfirmation) {
+      await FirestoreService.deleteDocument("recipes", recipeId);
+      handleFetchRecipes();
+      alert(`successfully deleted a recipe with an ID = ${recipeId}`);
+    }
   };
 
   FirebaseAuthService.subscribeToAuthChanges(setUser);
@@ -122,29 +137,33 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
- 
-          <Route path="/" exact element={<Home existingUser={user} />} />
-          <Route
-            path="/recipes"
-            exact
-            element={
-              <RecipesPage
-                recipes={recipes}
-                categoryFilter={categoryFilter}
-                handleCategoryFilter={setCategoryFilter}
-              />
-            }
-          />
-          <Route
-            path="/create-recipes-admin-only"
-            exact
-            element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
-          />
-          <Route 
-          path='/recipe/:id'
+        <Route path="/" exact element={<Home existingUser={user} />} />
+        <Route
+          path="/recipes"
           exact
-          element={<SingleRecipePage />}
-          />
+          element={
+            <RecipesPage
+              recipes={recipes}
+              user={user}
+              categoryFilter={categoryFilter}
+              handleCategoryFilter={setCategoryFilter}
+              recipesPerPage={recipesPerPage}
+              handleRecipesPerPage={handleRecipesPerPageChange}
+              handleLoadMoreRecipes={handleLoadMoreRecipesClick}
+              handleDeleteRecipe={handleDeleteRecipe}
+            />
+          }
+        />
+        <Route
+          path="/create-recipes-admin-only"
+          exact
+          element={
+            <CreateRecipePage
+              handleAddRecipe={handleAddRecipe}
+            />
+          }
+        />
+        <Route path="/recipe/:id" exact element={<SingleRecipePage />} />
       </Routes>
       <Footer user={user} />
     </BrowserRouter>

@@ -9,7 +9,7 @@ const createDocument = (collection, document) => {
 const readDocuments = ({ collection, queries }) => {
   let collectionRef = firestore.collection(collection);
 
-  if (queries > 0) {
+  if (queries && queries.length > 0) {
     for (const query of queries) {
       collectionRef = collectionRef.where(
         query.field,
@@ -26,10 +26,15 @@ const updateDocument = (collection, id, document) => {
   return firestore.collection(collection).doc(id).update(document);
 };
 
+const deleteDocument = (collection, id) => {
+  return firestore.collection(collection).doc(id).delete();
+}
+
 const FirestoreService = {
   createDocument,
   readDocuments,
   updateDocument,
+  deleteDocument
 };
 
 export default FirestoreService;

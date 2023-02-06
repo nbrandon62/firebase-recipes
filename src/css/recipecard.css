@@ -3,6 +3,15 @@
     margin-left: .7rem;
     margin: calc(2rem - .14285714em) 0 .5rem;
 }
+.recipe-header-container{
+    display: flex;
+    justify-content: space-between;
+}
+.trash-icon{
+    color: rgb(0, 0, 0);
+    margin: .25em;
+    cursor: pointer;
+}
 .recipe-header{
     text-decoration: underline;
     margin-left: .7rem;

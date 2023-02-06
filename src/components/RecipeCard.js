@@ -1,4 +1,5 @@
 import React from "react";
+import { FaTrashAlt } from 'react-icons/fa';
 
 import "../css/recipecard.css";
 
@@ -9,6 +10,8 @@ export const RecipeCard = ({
   ingredients,
   publishDate,
   id,
+  user,
+  handleDeleteRecipe,
 }) => {
   const formatDate = (publishDate) => {
     const day = publishDate.getUTCDate();
@@ -37,7 +40,12 @@ export const RecipeCard = ({
 
   return (
     <div className="recipe-card">
-      <h3 className="recipe-header">{title}</h3>
+      <div className="recipe-header-container">
+        <h3 className="recipe-header">{title}</h3>
+        {user ? (
+          <FaTrashAlt onClick={(e) => handleDeleteRecipe(id)}  className='trash-icon' />
+        ) : null}
+      </div>
       <div className="recipe-column">
         <h3 className="recipe-title">ingredients:</h3>
         <li className="recipe-ingredients">{formatIngredients(ingredients)}</li>
