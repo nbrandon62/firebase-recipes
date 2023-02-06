@@ -132,7 +132,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
                 onChange={(e) => setPublishDate(e.target.value)}
                 rows="1"
               ></textarea>
-              <button className="ui button" onClick={handleRecipeSubmit}>
+              <button type ='submit' className="ui button" onClick={handleRecipeSubmit}>
                 Add Recipe
               </button>
             </div>
