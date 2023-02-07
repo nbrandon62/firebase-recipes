@@ -130,16 +130,6 @@ function App() {
 
   };
 
-  // const handleEditRecipeClick = (recipeId) => {
-  //   const selectedRecipe = recipes.find((recipe) => {
-  //     return recipe.id === recipeId;
-  //   });
-
-  //   if (selectedRecipe) {
-  //     setCurrentRecipe(selectedRecipe);
-  //   }
-  // };
-
   const handleDeleteRecipe = async (recipeId) => {
     const deleteConfirmation = window.confirm(
       "Are you sure you want to delete this recipe?"
@@ -158,7 +148,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" exact element={<Home existingUser={user} />} />
+        <Route path="/home" exact element={<Home existingUser={user} />} />
         <Route
           path="/recipes"
           exact
