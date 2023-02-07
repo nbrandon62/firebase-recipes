@@ -148,7 +148,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/home" exact element={<Home existingUser={user} />} />
+        <Route path="/" exact element={<Home existingUser={user} />} />
         <Route
           path="/recipes"
           exact
