@@ -48,7 +48,7 @@ export const RecipeCard = ({
       </div>
       <div className="recipe-column">
         <h3 className="recipe-title">ingredients:</h3>
-        <li className="recipe-ingredients">{formatIngredients(ingredients)}</li>
+        <div className="recipe-ingredients">{formatIngredients(ingredients)}</div>
       </div>
       <div className="recipe-column">
         <h3 className="recipe-title">method:</h3>
