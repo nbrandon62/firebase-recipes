@@ -1,9 +1,28 @@
+.card-list-container{
+    background-color: #fcede4;
+}
+
+.sort-by-container{
+    display: flex;
+}
+
+.card-list-sort{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 3px dotted black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
 .card-list{
     display: flex;
     flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: #fcede4;
 }
 
 @media (max-width: 712px){
@@ -27,7 +46,7 @@
 .title{
     cursor: pointer;
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
     padding-left: 6rem;
     padding-right: 6rem;
     padding-top: 9rem;

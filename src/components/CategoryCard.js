@@ -3,14 +3,10 @@ import { Link } from "react-router-dom";
 
 import "../css/category.css";
 
-const CategoryCard = ({
-  title,
-  color,
-  filter,
-  handleCategoryFilter,
-}) => {
+const CategoryCard = ({ title, color, filter, handleCategoryFilter }) => {
+
   return (
-    <Link to='/recipes'>
+    <Link to="/recipes">
       <div
         className="card-container"
         onClick={() => handleCategoryFilter(filter)}

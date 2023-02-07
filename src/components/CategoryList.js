@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryCard from "./CategoryCard";
+import { TbArrowsDownUp } from "react-icons/tb";
 
 import "../css/category.css";
 
@@ -25,9 +26,19 @@ const categories = [
     icon: null,
     color: "#FFFDE8",
   },
+
 ];
 
-const CategoryList = ({ handleCategoryFilter }) => {
+const CategoryList = ({ orderBy, handleOrderBy, handleCategoryFilter }) => {
+
+  const handleOrderByDate = (event) => {
+    if (orderBy === "publishDateDesc") {
+      handleOrderBy("publishDateAsc");
+    } else {
+      handleOrderBy("publishDateDesc");
+    }
+  };
+
   const renderedList = categories.map((category) => {
     return (
       <CategoryCard
@@ -37,11 +48,31 @@ const CategoryList = ({ handleCategoryFilter }) => {
         color={category.color}
         filter={category.filter}
         handleCategoryFilter={handleCategoryFilter}
+        
       />
     );
   });
 
-  return <div className="card-list">{renderedList}</div>;
+  return (
+    <div className="card-list-container">
+      <div className="card-list">
+        {renderedList}
+      <div className="sort-by-container">
+        {orderBy === "publishDateDesc" ? (
+          <div className="card-list-sort" onClick={(e) => handleOrderByDate()}>
+            <div>Most Recent</div>
+            <TbArrowsDownUp />
+          </div>
+        ) : (
+          <div className="card-list-sort" onClick={(e) => handleOrderByDate()}>
+            <div>Oldest</div>
+            <TbArrowsDownUp />
+          </div>
+        )}
+      </div>
+      </div>
+    </div>
+  );
 };
 
 export default CategoryList;

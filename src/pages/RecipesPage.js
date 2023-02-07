@@ -25,11 +25,11 @@ const RecipesPage = ({
   return (
     <div>
       <div className="recipes-container">
-        <select value={orderBy} onChange={(e) => handleOrderBy(e.target.value)}>
-          <option value="publishDateDesc">Newest</option>
-          <option value="publishDateAsc">Oldest</option>
-        </select>
-        <CategoryList handleCategoryFilter={handleCategoryFilter} />
+        <CategoryList
+          handleCategoryFilter={handleCategoryFilter}
+          orderBy={orderBy}
+          handleOrderBy={handleOrderBy}
+        />
       </div>
       {isLoading ? (
         <Dimmer active inverted>
