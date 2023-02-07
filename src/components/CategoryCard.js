@@ -7,7 +7,6 @@ const CategoryCard = ({
   title,
   color,
   filter,
-  categoryFilter,
   handleCategoryFilter,
 }) => {
   return (

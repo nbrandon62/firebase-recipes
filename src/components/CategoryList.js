@@ -27,7 +27,7 @@ const categories = [
   },
 ];
 
-const CategoryList = ({ handleCategoryFilter, categoryFilter }) => {
+const CategoryList = ({ handleCategoryFilter }) => {
   const renderedList = categories.map((category) => {
     return (
       <CategoryCard
@@ -36,7 +36,6 @@ const CategoryList = ({ handleCategoryFilter, categoryFilter }) => {
         key={category.key}
         color={category.color}
         filter={category.filter}
-        categoryFilter={categoryFilter}
         handleCategoryFilter={handleCategoryFilter}
       />
     );
