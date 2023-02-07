@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Loader, Dimmer } from "semantic-ui-react";
 
 import ScrollTopButton from "../components/ScrollTopButton";
 import CategoryList from "../components/CategoryList";
@@ -8,6 +9,7 @@ import "../css/recipelist.css";
 const RecipesPage = ({
   recipes,
   user,
+  isLoading,
   categoryFilter,
   recipesPerPage,
   handleDeleteRecipe,
@@ -27,11 +29,23 @@ const RecipesPage = ({
           categoryFilter={categoryFilter}
         />
       </div>
-      <RecipeList
-        recipes={recipes}
-        user={user}
-        handleDeleteRecipe={handleDeleteRecipe}
-      />
+      {isLoading ? (
+        <Dimmer active inverted>
+          <Loader>Loading...</Loader>
+        </Dimmer>
+      ) : null}
+      {!isLoading && recipes && recipes.length === 0 ? (
+        <div style={{display: 'flex', justifyContent: 'center', backgroundColor:'#fcede4'}}>
+          <h1>no recipes found...</h1>
+        </div>
+      ) : null}
+      {recipes && recipes.length > 0 ? (
+        <RecipeList
+          recipes={recipes}
+          user={user}
+          handleDeleteRecipe={handleDeleteRecipe}
+        />
+      ) : null}
 
       <ScrollTopButton />
     </div>

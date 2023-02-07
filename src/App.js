@@ -16,8 +16,11 @@ function App() {
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [recipesPerPage, setRecipesPerPage] = useState(2);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     fetchRecipes()
       .then((fetchedRecipes) => {
         setRecipes(fetchedRecipes);
@@ -25,9 +28,10 @@ function App() {
       .catch((error) => {
         console.error(error.message);
         throw error;
-      });
+      })
+      .finally(() => {setIsLoading(false)})
+      ;
 
-    // console.log(categoryFilter);
   }, [user, categoryFilter, recipesPerPage]);
 
   const fetchRecipes = async (cursorId = "") => {
@@ -146,6 +150,7 @@ function App() {
               recipes={recipes}
               user={user}
               categoryFilter={categoryFilter}
+              isLoading={isLoading}
               handleCategoryFilter={setCategoryFilter}
               recipesPerPage={recipesPerPage}
               handleRecipesPerPage={handleRecipesPerPageChange}
@@ -172,8 +177,3 @@ function App() {
 
 export default App;
 
-//   <LoginForm existingUser={user} />
-
-//   {user ? <AddEditRecipeForm handleAddRecipe={handleAddRecipe} /> : null}
-
-//   <RecipeList recipes={recipes} />
