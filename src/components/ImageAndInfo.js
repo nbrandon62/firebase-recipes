@@ -31,7 +31,7 @@ const ImageAndInfo = ({ image, title, description }) => {
           <Description>{description}</Description>
         </Grid.Column>
         <Grid.Column>
-          {/* <div className='z-index'>ABOUT</div> */}
+        <Image fluid src={image} alt="" />
         </Grid.Column>
       </Grid>
     </Wrapper>
