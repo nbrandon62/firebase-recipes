@@ -5,7 +5,9 @@
 .sort-by-container{
     display: flex;
 }
-
+.sort-by-icon{
+    margin: .5em;
+}
 .card-list-sort{
     cursor: pointer;
     display: flex;
