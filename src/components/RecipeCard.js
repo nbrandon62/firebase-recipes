@@ -31,7 +31,7 @@ export const RecipeCard = ({
   };
 
   const formatMethod = (method) => {
-    let methodArr = method.split("-");
+    let methodArr = method.split("-").splice(1);
     let methodList = methodArr.map((method, index) => {
       return <li key={index}>{method}</li>;
     });
