@@ -17,6 +17,10 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
       alert("Please add ingredients to the recipe before submitting");
       return;
     }
+    if (category.length === 0) {
+      alert("Please select a category before submitting");
+      return;
+    }
     if (method.length === 0) {
       alert("Please add method to the recipe before submitting");
       return;
@@ -40,7 +44,7 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
     handleAddRecipe(newRecipe);
     setTitle("");
     setCategory("");
-    setPublishDate("");
+    // setPublishDate("");
     setMethod("");
     setIngredients("");
   };
