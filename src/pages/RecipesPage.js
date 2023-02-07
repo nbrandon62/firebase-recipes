@@ -10,8 +10,9 @@ const RecipesPage = ({
   recipes,
   user,
   isLoading,
-  categoryFilter,
   recipesPerPage,
+  orderBy,
+  handleOrderBy,
   handleDeleteRecipe,
   handleCategoryFilter,
   handleLoadMoreRecipes,
@@ -24,10 +25,11 @@ const RecipesPage = ({
   return (
     <div>
       <div className="recipes-container">
-        <CategoryList
-          handleCategoryFilter={handleCategoryFilter}
-          categoryFilter={categoryFilter}
-        />
+        <select value={orderBy} onChange={(e) => handleOrderBy(e.target.value)}>
+          <option value="publishDateDesc">Newest</option>
+          <option value="publishDateAsc">Oldest</option>
+        </select>
+        <CategoryList handleCategoryFilter={handleCategoryFilter} />
       </div>
       {isLoading ? (
         <Dimmer active inverted>
@@ -35,7 +37,13 @@ const RecipesPage = ({
         </Dimmer>
       ) : null}
       {!isLoading && recipes && recipes.length === 0 ? (
-        <div style={{display: 'flex', justifyContent: 'center', backgroundColor:'#fcede4'}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "#fcede4",
+          }}
+        >
           <h1>no recipes found...</h1>
         </div>
       ) : null}

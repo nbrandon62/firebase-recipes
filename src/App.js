@@ -13,8 +13,8 @@ import SingleRecipePage from "./pages/SingleRecipePage";
 function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
-  const [currentRecipe, setCurrentRecipe] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState("");
+  const [orderBy, setOrderBy] = useState('publishDateDesc')
   const [recipesPerPage, setRecipesPerPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +32,7 @@ function App() {
       .finally(() => {setIsLoading(false)})
       ;
 
-  }, [user, categoryFilter, recipesPerPage]);
+  }, [user, categoryFilter, orderBy, recipesPerPage]);
 
   const fetchRecipes = async (cursorId = "") => {
     const queries = [];
@@ -45,11 +45,28 @@ function App() {
       });
     }
 
+    const orderByField = 'publishDate';
+    let orderByDirection;
+
+    if (orderBy) {
+      switch(orderBy){
+        case 'publishDateAsc':
+          orderByDirection = 'asc';
+          break;
+        case 'publishDateDesc':
+          orderByDirection = 'desc';
+          break;
+        default: break;
+      }
+    }
+
     let fetchedRecipes = [];
 
     const response = await FirestoreService.readDocuments({
       collection: "recipes",
       queries: queries,
+      orderByField: orderByField,
+      orderByDirection: orderByDirection,
       perPage: recipesPerPage,
       cursorId: cursorId,
     });
@@ -110,18 +127,18 @@ function App() {
     handleFetchRecipes();
 
     alert(`successfully updated the recipe with the id: ${recipeId}`);
-    setCurrentRecipe(null);
+
   };
 
-  const handleEditRecipeClick = (recipeId) => {
-    const selectedRecipe = recipes.find((recipe) => {
-      return recipe.id === recipeId;
-    });
+  // const handleEditRecipeClick = (recipeId) => {
+  //   const selectedRecipe = recipes.find((recipe) => {
+  //     return recipe.id === recipeId;
+  //   });
 
-    if (selectedRecipe) {
-      setCurrentRecipe(selectedRecipe);
-    }
-  };
+  //   if (selectedRecipe) {
+  //     setCurrentRecipe(selectedRecipe);
+  //   }
+  // };
 
   const handleDeleteRecipe = async (recipeId) => {
     const deleteConfirmation = window.confirm(
@@ -149,10 +166,11 @@ function App() {
             <RecipesPage
               recipes={recipes}
               user={user}
-              categoryFilter={categoryFilter}
               isLoading={isLoading}
-              handleCategoryFilter={setCategoryFilter}
               recipesPerPage={recipesPerPage}
+              orderBy={orderBy}
+              handleOrderBy={setOrderBy}
+              handleCategoryFilter={setCategoryFilter}
               handleRecipesPerPage={handleRecipesPerPageChange}
               handleLoadMoreRecipes={handleLoadMoreRecipesClick}
               handleDeleteRecipe={handleDeleteRecipe}

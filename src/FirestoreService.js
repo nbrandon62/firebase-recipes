@@ -6,9 +6,10 @@ const createDocument = (collection, document) => {
   return firestore.collection(collection).add(document);
 };
 
-const readDocuments = ({ collection, queries }) => {
+const readDocuments = ({ collection, queries, orderByField, orderByDirection }) => {
   let collectionRef = firestore.collection(collection);
 
+  //.where() queries have to go before .orderBy() queries.
   if (queries && queries.length > 0) {
     for (const query of queries) {
       collectionRef = collectionRef.where(
@@ -17,6 +18,10 @@ const readDocuments = ({ collection, queries }) => {
         query.value
       );
     }
+  }
+
+  if (orderByDirection && orderByDirection) {
+    collectionRef = collectionRef.orderBy(orderByField, orderByDirection);
   }
 
   return collectionRef.get();
