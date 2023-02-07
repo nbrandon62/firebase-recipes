@@ -13,10 +13,10 @@ const Text = styled.div`
   color: white;
 `;
 
-const Jumbrotron = () => {
+const Jumbrotron = ({header}) => {
   return (
     <Wrapper>
-      <Text>Browse</Text>
+      <Text>{header}</Text>
     </Wrapper>
   );
 };

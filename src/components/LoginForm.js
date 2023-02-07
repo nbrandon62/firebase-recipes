@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Grid, Image } from "semantic-ui-react";
-import FirebaseAuthService from "../FirebaseAuthService";
 import { Link } from "react-router-dom";
 
+import FirebaseAuthService from "../FirebaseAuthService";
 import ScrollBottomButton from '../components/ScrollBottomButton';
 import "../css/loginform.css";
 import chef3 from "../images/chef3.avif";
@@ -27,20 +27,6 @@ const LoginForm = ({ existingUser }) => {
   const handleLogout = () => {
     FirebaseAuthService.logoutUser();
   };
-
-  // const handleSendResetPasswordEmail = async () => {
-  //   if (!username) {
-  //     alert("Missing Username!");
-  //     return;
-  //   }
-
-  //   try {
-  //     await FirebaseAuthService.sendPasswordResetEmail(username);
-  //     alert("Sent the password reset email!");
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // };
 
   return (
     <div className="gridded">
