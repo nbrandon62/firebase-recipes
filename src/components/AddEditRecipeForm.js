@@ -44,7 +44,6 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
     handleAddRecipe(newRecipe);
     setTitle("");
     setCategory("");
-    // setPublishDate("");
     setMethod("");
     setIngredients("");
   };
