@@ -17,7 +17,6 @@ const RecipesPage = ({
   handleCategoryFilter,
   handleLoadMoreRecipes,
   handleRecipesPerPage,
-  handleFetchRecipeById,
   handleFormatIngredients,
   handleFormatMethod,
 }) => {
@@ -55,7 +54,6 @@ const RecipesPage = ({
           recipes={recipes}
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
-          handleFetchRecipeById={handleFetchRecipeById}
           handleFormatIngredients={handleFormatIngredients}
           handleFormatMethod={handleFormatMethod}
         />

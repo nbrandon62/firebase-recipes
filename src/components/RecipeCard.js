@@ -7,13 +7,10 @@ import "../css/recipecard.css";
 export const RecipeCard = ({
   title,
   method,
-  category,
   ingredients,
-  publishDate,
   id,
   user,
   handleDeleteRecipe,
-  handleFetchRecipeById,
   handleFormatIngredients,
   handleFormatMethod
 }) => {
