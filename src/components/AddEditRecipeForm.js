@@ -81,6 +81,8 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
         </div>
       </div>
 
+      {/* TODO: Create a function that autofills the text area with a hyphen, and hypenates automatically with every enter key press */}
+
       <div className="ui form">
         <div className="fields">
           <div className="twelve wide field">

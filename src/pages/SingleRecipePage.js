@@ -15,6 +15,8 @@ const SingleRecipePage = ({ handleFetchRecipeById }) => {
     fetchSingleRecipe();
   }, [])
 
+  //TODO: have this function run after the promise is fulfilled. 
+
   // const formatDate = (selectedRecipe) => {
   //   const day = publishDate.getUTCDate();
   //   const month = publishDate.getUTCMonth() + 1;
