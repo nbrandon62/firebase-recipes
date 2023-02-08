@@ -30,6 +30,7 @@ const SingleRecipePage = ({ handleFetchRecipeById }) => {
 
   console.log(selectedRecipe);
 
+  //TODO: style the single recipe card to be a more blown up version of the recipe card. 
 //   <div className="recipe-card-container">
 //     <div className="recipe-card">
 //       <div className="recipe-header-container">
