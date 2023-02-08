@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
-  const [orderBy, setOrderBy] = useState('publishDateDesc')
+  const [orderBy, setOrderBy] = useState("publishDateDesc");
   const [recipesPerPage, setRecipesPerPage] = useState(2);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,9 +29,9 @@ function App() {
         console.error(error.message);
         throw error;
       })
-      .finally(() => {setIsLoading(false)})
-      ;
-
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [user, categoryFilter, orderBy, recipesPerPage]);
 
   const fetchRecipes = async (cursorId = "") => {
@@ -45,18 +45,19 @@ function App() {
       });
     }
 
-    const orderByField = 'publishDate';
+    const orderByField = "publishDate";
     let orderByDirection;
 
     if (orderBy) {
-      switch(orderBy){
-        case 'publishDateAsc':
-          orderByDirection = 'asc';
+      switch (orderBy) {
+        case "publishDateAsc":
+          orderByDirection = "asc";
           break;
-        case 'publishDateDesc':
-          orderByDirection = 'desc';
+        case "publishDateDesc":
+          orderByDirection = "desc";
           break;
-        default: break;
+        default:
+          break;
       }
     }
 
@@ -98,6 +99,11 @@ function App() {
     }
   };
 
+  const handleFetchRecipeById = async (id) => {
+    const response = await FirestoreService.readSingleDocument("recipes", id);
+    return response;
+  };
+
   const handleAddRecipe = async (newRecipe) => {
     const response = await FirestoreService.createDocument(
       "recipes",
@@ -127,7 +133,6 @@ function App() {
     handleFetchRecipes();
 
     alert(`successfully updated the recipe with the id: ${recipeId}`);
-
   };
 
   const handleDeleteRecipe = async (recipeId) => {
@@ -164,19 +169,25 @@ function App() {
               handleRecipesPerPage={handleRecipesPerPageChange}
               handleLoadMoreRecipes={handleLoadMoreRecipesClick}
               handleDeleteRecipe={handleDeleteRecipe}
+              handleFetchRecipeById={handleFetchRecipeById}
             />
           }
         />
         <Route
           path="/create-recipes-admin-only"
           exact
+          element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
+        />
+        {/* TODO: make the id attach to the recipes/url  */}
+        <Route
+          path="/recipes/:id"
+          exact
           element={
-            <CreateRecipePage
-              handleAddRecipe={handleAddRecipe}
+            <SingleRecipePage
+            handleFetchRecipeById={handleFetchRecipeById}
             />
           }
         />
-        <Route path="/recipe/:id" exact element={<SingleRecipePage />} />
       </Routes>
       <Footer user={user} />
     </BrowserRouter>
@@ -184,4 +195,3 @@ function App() {
 }
 
 export default App;
-
