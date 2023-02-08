@@ -18,21 +18,6 @@ export const RecipeCard = ({
   handleFormatMethod
 }) => {
 
-  // const formatIngredients = (ingredients) => {
-  //   let ingredientsArr = ingredients.split(",");
-  //   let ingredientList = ingredientsArr.map((ingredient, index) => {
-  //     return <li key={index}>{ingredient}</li>;
-  //   });
-  //   return ingredientList;
-  // };
-
-  // const formatMethod = (method) => {
-  //   let methodArr = method.split("-").splice(1);
-  //   let methodList = methodArr.map((method, index) => {
-  //     return <li key={index}>{method}</li>;
-  //   });
-  //   return methodList;
-  // };
 
   return (
     <div className="recipe-card-container">
