@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import '../css/singlerecipecard.css';
+
 const SingleRecipePage = ({ handleFetchRecipeById }) => {
   const [selectedRecipe, setSelectedRecipe] = useState("");
 
@@ -28,6 +30,29 @@ const SingleRecipePage = ({ handleFetchRecipeById }) => {
 
   console.log(selectedRecipe);
 
+//   <div className="recipe-card-container">
+//     <div className="recipe-card">
+//       <div className="recipe-header-container">
+//         <h3 className="recipe-header">{title}</h3>
+//         {user ? (
+//           <FaTrashAlt
+//             onClick={(e) => handleDeleteRecipe(id)}
+//             className="trash-icon"
+//           />
+//         ) : null}
+//       </div>
+//       <div className="recipe-column">
+//         <h3 className="recipe-title">ingredients:</h3>
+//         <div className="recipe-ingredients">
+//           {formatIngredients(ingredients)}
+//         </div>
+//       </div>
+//       <div className="recipe-column">
+//         <h3 className="recipe-title">method:</h3>
+//         <ol className="recipe-method">{formatMethod(method)}</ol>
+//       </div>
+//     </div>
+// </div>
 
   return (
     <div>

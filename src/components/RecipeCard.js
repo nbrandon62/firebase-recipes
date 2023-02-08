@@ -14,23 +14,25 @@ export const RecipeCard = ({
   user,
   handleDeleteRecipe,
   handleFetchRecipeById,
+  handleFormatIngredients,
+  handleFormatMethod
 }) => {
 
-  const formatIngredients = (ingredients) => {
-    let ingredientsArr = ingredients.split(",");
-    let ingredientList = ingredientsArr.map((ingredient, index) => {
-      return <li key={index}>{ingredient}</li>;
-    });
-    return ingredientList;
-  };
+  // const formatIngredients = (ingredients) => {
+  //   let ingredientsArr = ingredients.split(",");
+  //   let ingredientList = ingredientsArr.map((ingredient, index) => {
+  //     return <li key={index}>{ingredient}</li>;
+  //   });
+  //   return ingredientList;
+  // };
 
-  const formatMethod = (method) => {
-    let methodArr = method.split("-").splice(1);
-    let methodList = methodArr.map((method, index) => {
-      return <li key={index}>{method}</li>;
-    });
-    return methodList;
-  };
+  // const formatMethod = (method) => {
+  //   let methodArr = method.split("-").splice(1);
+  //   let methodList = methodArr.map((method, index) => {
+  //     return <li key={index}>{method}</li>;
+  //   });
+  //   return methodList;
+  // };
 
   return (
     <div className="recipe-card-container">
@@ -48,12 +50,12 @@ export const RecipeCard = ({
           <div className="recipe-column">
             <h3 className="recipe-title">ingredients:</h3>
             <div className="recipe-ingredients">
-              {formatIngredients(ingredients)}
+              {handleFormatIngredients(ingredients)}
             </div>
           </div>
           <div className="recipe-column">
             <h3 className="recipe-title">method:</h3>
-            <ol className="recipe-method">{formatMethod(method)}</ol>
+            <ol className="recipe-method">{handleFormatMethod(method)}</ol>
           </div>
         </div>
       </Link>

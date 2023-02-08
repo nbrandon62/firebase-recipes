@@ -1,7 +1,7 @@
 import React from "react";
 import { RecipeCard } from "./RecipeCard";
 
-const RecipeList = ({ recipes, user, handleDeleteRecipe, handleFetchRecipeById }) => {
+const RecipeList = ({ recipes, user, handleDeleteRecipe, handleFetchRecipeById, handleFormatIngredients, handleFormatMethod }) => {
   const renderedList = recipes.map((recipe) => {
     return (
       <RecipeCard
@@ -15,6 +15,8 @@ const RecipeList = ({ recipes, user, handleDeleteRecipe, handleFetchRecipeById }
         publishDate={recipe.publishDate}
         handleDeleteRecipe={handleDeleteRecipe}
         handleFetchRecipeById={handleFetchRecipeById}
+        handleFormatIngredients={handleFormatIngredients}
+        handleFormatMethod={handleFormatMethod}
       />
     );
   });

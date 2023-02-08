@@ -147,6 +147,22 @@ function App() {
     }
   };
 
+  const formatIngredients = (ingredients) => {
+    let ingredientsArr = ingredients.split(",");
+    let ingredientList = ingredientsArr.map((ingredient, index) => {
+      return <li key={index}>{ingredient}</li>;
+    });
+    return ingredientList;
+  };
+
+  const formatMethod = (method) => {
+    let methodArr = method.split("-").splice(1);
+    let methodList = methodArr.map((method, index) => {
+      return <li key={index}>{method}</li>;
+    });
+    return methodList;
+  };
+
   FirebaseAuthService.subscribeToAuthChanges(setUser);
 
   return (
@@ -164,6 +180,8 @@ function App() {
               isLoading={isLoading}
               recipesPerPage={recipesPerPage}
               orderBy={orderBy}
+              handleFormatIngredients={formatIngredients}
+              handleFormatMethod={formatMethod}
               handleOrderBy={setOrderBy}
               handleCategoryFilter={setCategoryFilter}
               handleRecipesPerPage={handleRecipesPerPageChange}
@@ -185,6 +203,8 @@ function App() {
           element={
             <SingleRecipePage
             handleFetchRecipeById={handleFetchRecipeById}
+            handleFormatIngredients={formatIngredients}
+            handleFormatMethod={formatMethod}
             />
           }
         />

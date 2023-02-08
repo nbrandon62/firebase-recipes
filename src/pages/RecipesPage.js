@@ -17,7 +17,9 @@ const RecipesPage = ({
   handleCategoryFilter,
   handleLoadMoreRecipes,
   handleRecipesPerPage,
-  handleFetchRecipeById
+  handleFetchRecipeById,
+  handleFormatIngredients,
+  handleFormatMethod,
 }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,6 +56,8 @@ const RecipesPage = ({
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
           handleFetchRecipeById={handleFetchRecipeById}
+          handleFormatIngredients={handleFormatIngredients}
+          handleFormatMethod={handleFormatMethod}
         />
       ) : null}
 
