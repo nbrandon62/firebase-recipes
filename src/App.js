@@ -208,16 +208,17 @@ function App() {
           exact
           element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
         />
-        {/* TODO: make the id attach to the recipes/url  */}
         <Route
           path="/recipes/:id"
           exact
           element={
             <SingleRecipePage
+              user={user}
               handleFormatDate={toDateTime}
               handleFetchRecipeById={handleFetchRecipeById}
               handleFormatIngredients={formatIngredients}
               handleFormatMethod={formatMethod}
+              handleDeleteRecipe={handleDeleteRecipe}
             />
           }
         />

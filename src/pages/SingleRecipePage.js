@@ -1,44 +1,76 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 import "../css/singlerecipecard.css";
 
 const SingleRecipePage = ({
+  user,
   handleFetchRecipeById,
   handleFormatIngredients,
   handleFormatMethod,
-  handleFormatDate
+  handleFormatDate,
+  handleDeleteRecipe,
 }) => {
-  const [selectedRecipe, setSelectedRecipe] = useState('');
+  const [selectedRecipe, setSelectedRecipe] = useState("");
   const [formattedIngredients, setFormattedIngredients] = useState([]);
   const [formattedMethod, setFormattedMethod] = useState([]);
-  const [formattedTime, setFormattedTime] = useState([]);
+  const [formattedDate, setFormattedDate] = useState([]);
 
   const { id } = useParams();
-  
+
   useEffect(() => {
     fetchSingleRecipe();
   }, []);
-  
+
   const fetchSingleRecipe = async () => {
     const response = await handleFetchRecipeById(`${id}`);
     setSelectedRecipe(response);
-    setFormattedMethod(handleFormatMethod(response.method))
-    setFormattedIngredients(handleFormatIngredients(response.ingredients))
-    setFormattedTime(handleFormatDate(response.publishDate.seconds));
+    setFormattedMethod(handleFormatMethod(response.method));
+    setFormattedIngredients(handleFormatIngredients(response.ingredients));
+    setFormattedDate(handleFormatDate(response.publishDate.seconds));
   };
 
-
   return (
-    <div>
-      <Link to="/recipes">
-        <button>back to products</button>
-      </Link>
-      <div>{selectedRecipe.title}</div>
-      <div>{formattedIngredients}</div>
-      <ol>{formattedMethod}</ol>
-      <div>{selectedRecipe.category}</div>
-      <div>{formattedTime}</div>
+    <div className="single-recipe-wrapper">
+      <div className="single-recipe-container">
+        <div className="single-recipe-card">
+          {/* <div className="sr-button-container">
+          <Link to="/recipes">
+            <button className="ui button">Keep Browsing</button>
+          </Link>
+        </div> */}
+
+          <div className="single-recipe-header-container">
+            <h3 className="single-recipe-header">{selectedRecipe.title}</h3>
+            {user ? (
+              <FaTrashAlt
+                onClick={(e) => handleDeleteRecipe(id)}
+                className="trash-icon"
+              />
+            ) : null}
+          </div>
+
+            <h5 className="single-recipe-date">{formattedDate}</h5>
+            <div className="sr-col-ingredients">
+              <h3 className="single-recipe-title">ingredients:</h3>
+              <div className="single-recipe-ingredients">
+                {formattedIngredients}
+              </div>
+            </div>
+            <div className="sr-col-method">
+              <h3 className="single-recipe-title">method:</h3>
+              <ol className="single-recipe-method">{formattedMethod}</ol>
+            </div>
+
+
+        </div>
+          <div className="sr-button-container">
+            <Link to="/recipes">
+              <button className="ui button">Keep Browsing</button>
+            </Link>
+          </div>
+      </div>
     </div>
   );
 };
@@ -46,27 +78,3 @@ const SingleRecipePage = ({
 export default SingleRecipePage;
 
 //TODO: style the single recipe card to be a more blown up version of the recipe card.
-
-//   <div className="recipe-card-container">
-//     <div className="recipe-card">
-//       <div className="recipe-header-container">
-//         <h3 className="recipe-header">{title}</h3>
-//         {user ? (
-//           <FaTrashAlt
-//             onClick={(e) => handleDeleteRecipe(id)}
-//             className="trash-icon"
-//           />
-//         ) : null}
-//       </div>
-//       <div className="recipe-column">
-//         <h3 className="recipe-title">ingredients:</h3>
-//         <div className="recipe-ingredients">
-//           {formatIngredients(ingredients)}
-//         </div>
-//       </div>
-//       <div className="recipe-column">
-//         <h3 className="recipe-title">method:</h3>
-//         <ol className="recipe-method">{formatMethod(method)}</ol>
-//       </div>
-//     </div>
-// </div>
