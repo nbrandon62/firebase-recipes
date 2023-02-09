@@ -11,6 +11,12 @@ const Text = styled.div`
   justify-content: center;
   font-size: 5rem;
   color: white;
+  @media (max-width: 984px ){
+    font-size:3rem;
+  }
+  @media (max-width: 665px ){
+    font-size:2rem;
+  }
 `;
 
 const Jumbrotron = ({header}) => {
