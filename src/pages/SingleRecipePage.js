@@ -51,6 +51,7 @@ const SingleRecipePage = ({
             ) : null}
           </div>
 
+          <div className="sr-col-wrapper">
             <h5 className="single-recipe-date">{formattedDate}</h5>
             <div className="sr-col-ingredients">
               <h3 className="single-recipe-title">ingredients:</h3>
@@ -62,14 +63,14 @@ const SingleRecipePage = ({
               <h3 className="single-recipe-title">method:</h3>
               <ol className="single-recipe-method">{formattedMethod}</ol>
             </div>
-
-
-        </div>
-          <div className="sr-button-container">
-            <Link to="/recipes">
-              <button className="ui button">Keep Browsing</button>
-            </Link>
           </div>
+          
+        </div>
+        <div className="sr-button-container">
+          <Link to="/recipes">
+            <button className="ui button">Keep Browsing</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

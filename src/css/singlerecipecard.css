@@ -42,12 +42,6 @@
     margin:calc(2rem - .14285714em) .5rem 0rem;
 }
 
-.single-recipe-card, a{
-    color:black;
-}
-.single-recipe-card, a:hover{
-    color:black;
-}
 .sr-col-ingredients {
     float: right;
     width: 40%;
@@ -64,4 +58,24 @@
     display: flex;
     justify-content: flex-end;
     padding-top: 1rem;
+}
+@media (max-width: 571px) {
+    .sr-col-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .sr-col-ingredients {
+        float: right;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        padding-left: 1rem;
+    }
+    .sr-col-method {
+        float: left;
+        width: 80%;
+        height: 50%;
+        padding: 10px;
+    }
 }
