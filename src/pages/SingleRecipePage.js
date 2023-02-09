@@ -35,11 +35,6 @@ const SingleRecipePage = ({
     <div className="single-recipe-wrapper">
       <div className="single-recipe-container">
         <div className="single-recipe-card">
-          {/* <div className="sr-button-container">
-          <Link to="/recipes">
-            <button className="ui button">Keep Browsing</button>
-          </Link>
-        </div> */}
 
           <div className="single-recipe-header-container">
             <h3 className="single-recipe-header">{selectedRecipe.title}</h3>

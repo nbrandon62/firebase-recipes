@@ -59,7 +59,7 @@
     justify-content: flex-end;
     padding-top: 1rem;
 }
-@media (max-width: 571px) {
+@media (max-width: 687px) {
     .sr-col-wrapper{
         display: flex;
         flex-direction: column;
