@@ -163,6 +163,18 @@ function App() {
     return methodList;
   };
 
+  const toDateTime = (secs) => {
+    var t = new Date(Date.UTC(1970, 0, 1)); // Epoch
+    t.setSeconds(secs);
+
+    const day = t.getUTCDate();
+    const month = t.getUTCMonth() + 1;
+    const year = t.getFullYear();
+    const dateString = `${month}/${day}/${year}`;
+
+    return dateString;
+  }
+
   FirebaseAuthService.subscribeToAuthChanges(setUser);
 
   return (
@@ -202,9 +214,10 @@ function App() {
           exact
           element={
             <SingleRecipePage
-            handleFetchRecipeById={handleFetchRecipeById}
-            handleFormatIngredients={formatIngredients}
-            handleFormatMethod={formatMethod}
+              handleFormatDate={toDateTime}
+              handleFetchRecipeById={handleFetchRecipeById}
+              handleFormatIngredients={formatIngredients}
+              handleFormatMethod={formatMethod}
             />
           }
         />

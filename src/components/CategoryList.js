@@ -60,12 +60,12 @@ const CategoryList = ({ orderBy, handleOrderBy, handleCategoryFilter }) => {
       <div className="sort-by-container">
         {orderBy === "publishDateDesc" ? (
           <div className="card-list-sort" onClick={(e) => handleOrderByDate()}>
-            <div>Most Recent</div>
+            <div>Oldest</div>
             <TbArrowsDownUp className="sort-by-icon" />
           </div>
         ) : (
           <div className="card-list-sort" onClick={(e) => handleOrderByDate()}>
-            <div>Oldest</div>
+            <div>Most Recent</div>
             <TbArrowsDownUp className="sort-by-icon" />
           </div>
         )}

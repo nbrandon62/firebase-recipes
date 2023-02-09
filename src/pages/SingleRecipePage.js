@@ -1,36 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import '../css/singlerecipecard.css';
+import "../css/singlerecipecard.css";
 
-const SingleRecipePage = ({ handleFetchRecipeById }) => {
-  const [selectedRecipe, setSelectedRecipe] = useState("");
+const SingleRecipePage = ({
+  handleFetchRecipeById,
+  handleFormatIngredients,
+  handleFormatMethod,
+  handleFormatDate
+}) => {
+  const [selectedRecipe, setSelectedRecipe] = useState('');
+  const [formattedIngredients, setFormattedIngredients] = useState([]);
+  const [formattedMethod, setFormattedMethod] = useState([]);
+  const [formattedTime, setFormattedTime] = useState([]);
 
-  const {id} = useParams();
-
+  const { id } = useParams();
+  
+  useEffect(() => {
+    fetchSingleRecipe();
+  }, []);
+  
   const fetchSingleRecipe = async () => {
     const response = await handleFetchRecipeById(`${id}`);
     setSelectedRecipe(response);
-  }
+    setFormattedMethod(handleFormatMethod(response.method))
+    setFormattedIngredients(handleFormatIngredients(response.ingredients))
+    setFormattedTime(handleFormatDate(response.publishDate.seconds));
+  };
 
-  useEffect(() => {
-    fetchSingleRecipe();
-  }, [])
 
-  //TODO: have this function run after the promise is fulfilled. 
+  return (
+    <div>
+      <Link to="/recipes">
+        <button>back to products</button>
+      </Link>
+      <div>{selectedRecipe.title}</div>
+      <div>{formattedIngredients}</div>
+      <ol>{formattedMethod}</ol>
+      <div>{selectedRecipe.category}</div>
+      <div>{formattedTime}</div>
+    </div>
+  );
+};
 
-  // const formatDate = (selectedRecipe) => {
-  //   const day = publishDate.getUTCDate();
-  //   const month = publishDate.getUTCMonth() + 1;
-  //   const year = publishDate.getFullYear();
-  //   const dateString = `${month}/${day}/${year}`;
+export default SingleRecipePage;
 
-  //   return dateString;
-  // };
+//TODO: style the single recipe card to be a more blown up version of the recipe card.
 
-  console.log(selectedRecipe);
-
-  //TODO: style the single recipe card to be a more blown up version of the recipe card. 
 //   <div className="recipe-card-container">
 //     <div className="recipe-card">
 //       <div className="recipe-header-container">
@@ -54,20 +70,3 @@ const SingleRecipePage = ({ handleFetchRecipeById }) => {
 //       </div>
 //     </div>
 // </div>
-
-  return (
-    <div>
-      <Link to="/recipes">
-        <button>back to products</button>
-      </Link>
-      <div>{selectedRecipe.title}</div>
-      <div>{selectedRecipe.ingredients}</div>
-      <div>{selectedRecipe.method}</div>
-      <div>{selectedRecipe.category}</div>
-      {/* <div>{formatDate(selectedRecipe)}</div> */}
-      
-    </div>
-  );
-};
-
-export default SingleRecipePage;
