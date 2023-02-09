@@ -1,5 +1,4 @@
 import React from "react";
-import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import "../css/recipecard.css";
@@ -9,8 +8,7 @@ export const RecipeCard = ({
   method,
   ingredients,
   id,
-  user,
-  handleDeleteRecipe,
+
   handleFormatIngredients,
   handleFormatMethod
 }) => {
@@ -22,12 +20,6 @@ export const RecipeCard = ({
         <div className="recipe-card">
           <div className="recipe-header-container">
             <h3 className="recipe-header">{title}</h3>
-            {user ? (
-              <FaTrashAlt
-                onClick={(e) => handleDeleteRecipe(id)}
-                className="trash-icon"
-              />
-            ) : null}
           </div>
           <div className="recipe-column">
             <h3 className="recipe-title">ingredients:</h3>

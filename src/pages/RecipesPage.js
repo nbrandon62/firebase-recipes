@@ -10,15 +10,14 @@ const RecipesPage = ({
   recipes,
   user,
   isLoading,
-  recipesPerPage,
   orderBy,
-  handleOrderBy,
-  handleDeleteRecipe,
+  recipesPerPage,
   handleCategoryFilter,
-  handleLoadMoreRecipes,
-  handleRecipesPerPage,
   handleFormatIngredients,
   handleFormatMethod,
+  handleOrderBy,
+  handleLoadMoreRecipes,
+  handleRecipesPerPage,
 }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,8 +51,6 @@ const RecipesPage = ({
       {recipes && recipes.length > 0 ? (
         <RecipeList
           recipes={recipes}
-          user={user}
-          handleDeleteRecipe={handleDeleteRecipe}
           handleFormatIngredients={handleFormatIngredients}
           handleFormatMethod={handleFormatMethod}
         />
