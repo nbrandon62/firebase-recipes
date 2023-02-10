@@ -128,11 +128,11 @@ function App() {
     handleFetchRecipes(cursorId);
   };
 
-  const handleUpdateRecipe = async (newRecipe, recipeId) => {
-    await FirestoreService.updateDocument("recipes", recipeId, newRecipe);
-    handleFetchRecipes();
+  const handleUpdateRecipe = async ( id, updatedRecipe) => {
+    await FirestoreService.updateDocument("recipes", id, updatedRecipe);
+    handleFetchRecipeById(id)
 
-    alert(`successfully updated the recipe with the id: ${recipeId}`);
+    alert(`successfully updated the recipe with the id: ${id}`);
   };
 
   const handleDeleteRecipe = async (recipeId) => {
@@ -214,6 +214,7 @@ function App() {
           element={
             <SingleRecipePage
               user={user}
+              handleUpdateRecipe={handleUpdateRecipe}
               handleFormatDate={toDateTime}
               handleFetchRecipeById={handleFetchRecipeById}
               handleFormatIngredients={formatIngredients}
