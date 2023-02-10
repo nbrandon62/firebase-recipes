@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import $ from "jquery";
 
 const AddEditRecipeForm = ({ handleAddRecipe }) => {
   const [title, setTitle] = useState("");
@@ -48,6 +49,35 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
     setIngredients("");
   };
 
+
+  function handleAutoHyphen(event) {
+    var keycode = event.keyCode ? event.keyCode : event.which;
+    if (keycode == "13") {
+      var cursorPos = $("#textbox").prop("selectionStart");
+      var v = $("#textbox").val();
+      var textBefore = v.substring(0, cursorPos);
+      var textAfter = v.substring(cursorPos, v.length);
+      $("#textbox").val(textBefore + "\n-" + textAfter);
+
+      // setCaretPosition(document.getElementById("textbox"), cursorPos + 2);
+      return false;
+    }
+    event.stopPropagation();
+  }
+  //   function setCaretPosition(ctrl, pos) {
+  //   if (ctrl.setSelectionRange) {
+  //     ctrl.focus();
+  //     ctrl.setSelectionRange(pos, pos);
+  //   } else if (ctrl.createTextRange) {
+  //     var range = ctrl.createTextRange();
+  //     range.collapse(true);
+  //     range.moveEnd("character", pos);
+  //     range.moveStart("character", pos);
+  //     range.select();
+  //   }
+  // }
+ 
+
   return (
     <div className="recipe-form-container">
       <div className="ui form" onSubmit={handleRecipeSubmit}>
@@ -63,7 +93,6 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
           </div>
         </div>
       </div>
-
       <div className="ui form">
         <div className="fields">
           <div className="twelve wide field">
@@ -81,24 +110,18 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
         </div>
       </div>
 
-      {/* TODO: Create a function that autofills the text area with a hyphen, and hypenates automatically with every enter key press */}
-
       <div className="ui form">
         <div className="fields">
           <div className="twelve wide field">
             <div className="field">
               <label>Method</label>
               <textarea
-                placeholder="For a numbered list, hyphenate each step like so:
-                 - sear
-                 - saute
-                 - salt
-                 Else, just write out a paragraph Chez Panisse style: 
-                 Shell the beans. Put them in a large pot and cover with water by 2 inches. Add a splash of olive oil, a big pinch of salt, the bay leaf, a sprig of rosemary. Bring to a boil, reduce to a simmer, and cook gently for 30 to 45 minutes, until the beans are tender throughout. Taste one to ensure that they are cooked through."
-                type="text"
+                id="textbox"
                 value={method}
+                onKeyPress={(event) => handleAutoHyphen(event)}
                 onChange={(e) => setMethod(e.target.value)}
-              ></textarea>
+              >
+              </textarea>
             </div>
           </div>
         </div>
@@ -124,7 +147,6 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
           </div>
         </div>
       </div>
-
       <div className="ui form">
         <div className="fields">
           <div className="twelve wide field">
@@ -137,7 +159,11 @@ const AddEditRecipeForm = ({ handleAddRecipe }) => {
                 onChange={(e) => setPublishDate(e.target.value)}
                 rows="1"
               ></textarea>
-              <button type ='submit' className="ui button" onClick={handleRecipeSubmit}>
+              <button
+                type="submit"
+                className="ui button"
+                onClick={handleRecipeSubmit}
+              >
                 Add Recipe
               </button>
             </div>
