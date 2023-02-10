@@ -214,7 +214,6 @@ function App() {
           element={
             <SingleRecipePage
               user={user}
-              handleUpdateRecipe={handleUpdateRecipe}
               handleFormatDate={toDateTime}
               handleFetchRecipeById={handleFetchRecipeById}
               handleFormatIngredients={formatIngredients}
