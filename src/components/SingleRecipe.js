@@ -12,9 +12,8 @@ const SingleRecipe = ({
   formattedIngredients,
   formattedDate,
   handleDeleteRecipe,
-  handleShowEditClick
+  handleShowEditClick,
 }) => {
-  
   const { id } = useParams();
 
   return (
@@ -22,18 +21,22 @@ const SingleRecipe = ({
       <div className="single-recipe-container">
         <div className="single-recipe-card">
           <div className="single-recipe-header-container">
-            <h3 className="single-recipe-header">{selectedRecipe.title}</h3>
-            {user ? (
-              <>
-                <FaTrashAlt
-                  onClick={(e) => handleDeleteRecipe(id)}
-                  className="trash-icon"
-                />
-                <BsPencilSquare 
-                  onClick={(e) => handleShowEditClick(id)}
-                />
-              </>
-            ) : null}
+            <div className="sr-header-col-1">
+              <h3 className="single-recipe-header">{selectedRecipe.title}</h3>
+            </div>
+            <div className="sr-header-col-2">
+              {user ? (
+                <>
+                  <BsPencilSquare 
+                  className="pencil-icon"
+                  onClick={(e) => handleShowEditClick(id)} />
+                  <FaTrashAlt
+                    onClick={(e) => handleDeleteRecipe(id)}
+                    className="trash-icon"
+                  />
+                </>
+              ) : null}
+            </div>
           </div>
 
           <div className="sr-col-wrapper">

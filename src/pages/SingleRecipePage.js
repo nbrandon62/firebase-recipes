@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "../css/singlerecipecard.css";
+import FirestoreService from "../FirestoreService";
 import SingleRecipe from "../components/SingleRecipe";
 import EditRecipe from "../components/EditRecipe";
 
 const SingleRecipePage = ({
   user,
   handleFetchRecipeById,
-  handleUpdateRecipe,
   handleFormatIngredients,
   handleFormatMethod,
   handleFormatDate,
@@ -20,12 +20,20 @@ const SingleRecipePage = ({
   const [formattedDate, setFormattedDate] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
 
+  // TODO: secure the read rules per their email to me? 
 
   const { id } = useParams();
 
   useEffect(() => {
     fetchSingleRecipe();
   }, []);
+
+  const handleUpdateRecipe = async ( id, updatedRecipe) => {
+    await FirestoreService.updateDocument("recipes", id, updatedRecipe);
+    fetchSingleRecipe();
+    setShowEdit(!showEdit);
+    alert(`successfully updated the recipe with the id: ${id}`);
+  };
 
   const fetchSingleRecipe = async () => {
     const response = await handleFetchRecipeById(`${id}`);
@@ -38,15 +46,6 @@ const SingleRecipePage = ({
   const handleShowEditClick = () => {
     setShowEdit(!showEdit);
   };
-  
-  //  TODO: change the firebase functions to be able to take a new parameter of updatedRecipe. I think that the JSX and Components are structured properly but the console is saying insufficient permissions.
-
-  // TODO: secure the read rules per their email to me? 
-
-  const handleEditSubmit = (id, updatedRecipe) => {
-    handleUpdateRecipe(id, updatedRecipe);
-    setShowEdit(!showEdit)
-  }
 
   let content = (
     <>
@@ -69,8 +68,8 @@ const SingleRecipePage = ({
       date={selectedRecipe.date}
       ingredients={selectedRecipe.ingredients}
       method={selectedRecipe.method}
-      tite={selectedRecipe.title}
-      handleEditSubmit={handleEditSubmit}
+      handleEditSubmit={handleUpdateRecipe}
+      handleShowEditClick={handleShowEditClick}
       />
     );
   }
