@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
-const ScrollTopButton = () => {
+const ScrollBottom = () => {
   return (
     <div
       style={{
@@ -22,4 +22,4 @@ const ScrollTopButton = () => {
   );
 };
 
-export default ScrollTopButton;
+export default ScrollBottom;

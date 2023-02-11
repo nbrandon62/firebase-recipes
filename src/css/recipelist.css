@@ -1,3 +1,6 @@
+.recipes-list.wrapper{
+    background-color: #fcede4;
+}
 .recipes-container .title{
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -37,4 +40,10 @@
 .recipe-method{
     padding-inline-start: 15px;
     margin-block-start: 0;
+}
+.recipe-page-bottom{
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem;
+    background-color: #fcede4;
 }
