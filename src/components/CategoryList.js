@@ -56,6 +56,7 @@ const CategoryList = ({ orderBy, handleOrderBy, handleCategoryFilter }) => {
   return (
     <div className="card-list-container">
       <div className="card-list">
+        <div className="sort-all-title">See All</div>
         {renderedList}
       <div className="sort-by-container">
         {orderBy === "publishDateDesc" ? (

@@ -1,67 +1,149 @@
-.card-list-container{
-    background-color: #fcede4;
-}
-
-.sort-by-container{
-    display: flex;
-}
-.sort-by-icon{
-    margin: .5em;
-}
-.card-list-sort{
+@media (max-width: 1158px) {
+  .category-card-container .title,
+  .card-list .title,
+  .sort-by-container .card-list-sort,
+  .card-list-container .sort-all-title {
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 1%;
+    border-style: none;
+    box-shadow: 0px 0px 0px black;
+    transition: all 250ms ease-in-out;
+  }
+  .sort-by-container .card-list-sort {
+    background-color: rgb(255, 174, 0);
+  }
+  .card-list-container .sort-all-title {
+    color: white;
+    border: none;
+  }
+  .card-list-sort {
     cursor: pointer;
     display: flex;
     align-items: center;
     border: 3px dotted black;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; 
+    box-shadow: 0px 0px 0px black;
+    transition: all 250ms ease-in-out;
+  }
 }
-
-.card-list{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-@media (max-width: 712px){
-    .card-list{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        background-color: #fcede4;
-    }
-
-}
-
-.card-container {
-    height: 25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.title{
+@media (max-width: 721px) {
+  .category-card-container .title,
+  .card-list .title,
+  .sort-by-container .card-list-sort,
+  .card-list-container .sort-all-title {
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
-    padding-left: 6rem;
-    padding-right: 6rem;
-    padding-top: 9rem;
-    padding-bottom: 9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-radius: 1%;
-    border-style: solid;
+    border-style: none;
     box-shadow: 0px 0px 0px black;
     transition: all 250ms ease-in-out;
+  }
+  .sort-by-container .card-list-sort {
+    background-color: rgb(255, 174, 0);
+  }
+  .card-list-container .sort-all-title {
+    color: white;
+    border: none;
+  }
+}
+@media (max-width: 587px) {
+  .category-card-container .title,
+  .card-list .title,
+  .sort-by-container .card-list-sort,
+  .card-list-container .sort-all-title {
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 1%;
+    border-style: none;
+    box-shadow: 0px 0px 0px black;
+    transition: all 250ms ease-in-out;
+  }
+  .sort-by-container .card-list-sort {
+    background-color: rgb(255, 174, 0);
+  }
+  .card-list-container .sort-all-title {
+    color: white;
+    border: none;
+  }
+}
+.card-list-container {
+  background-color: #fcede4;
+}
+.sort-by-container {
+  display: flex;
+}
+.sort-by-icon {
+  margin: 0.5em;
+}
+.card-list-sort {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 3px dotted black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
-.title:hover{ 
-    box-shadow: -6px 7px 0px black;
-    transform: translate(6px, -7px);
-    text-decoration: none;
-    color: black;
+.card-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card-container {
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sort-all-title {
+  background-color: rgb(13, 30, 184);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 3px solic rgb(0, 0, 0);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.title {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  border-radius: 1%;
+  border-style: solid;
+  box-shadow: 0px 0px 0px black;
+  transition: all 250ms ease-in-out;
+}
+
+.title:hover, .sort-all-title:hover, .sort-by-container:hover {
+  box-shadow: -6px 7px 0px black;
+  transform: translate(6px, -7px);
+  text-decoration: none;
+  color: black;
 }

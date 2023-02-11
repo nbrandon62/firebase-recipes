@@ -8,7 +8,7 @@ const CategoryCard = ({ title, color, filter, handleCategoryFilter }) => {
   return (
     <Link to="/recipes">
       <div
-        className="card-container"
+        className="category-card-container"
         onClick={() => handleCategoryFilter(filter)}
       >
         <div className="title" style={{ backgroundColor: `${color}` }}>

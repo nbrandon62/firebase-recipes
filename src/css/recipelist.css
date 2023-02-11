@@ -9,11 +9,6 @@
 .recipes-container .card-container{
     height: 9rem;
 }
-@media (max-width: 712px){
-    .recipes-container .card-container{
-        height: 5rem;
-    }
-}
 
 .recipe-list{
     background-color: #fcede4;
@@ -33,11 +28,6 @@
         flex-wrap: wrap;
     }
 }
-
-/* .recipe-list>*{
-    flex: 0 1 160px;
-    margin: 10px;
-} */
 
 .recipe-list .ui.card{
     margin: 1em 0;
