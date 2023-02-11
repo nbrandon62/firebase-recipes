@@ -15,7 +15,7 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [orderBy, setOrderBy] = useState("publishDateDesc");
-  const [recipesPerPage, setRecipesPerPage] = useState(12);
+  const [recipesPerPage, setRecipesPerPage] = useState(9);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
