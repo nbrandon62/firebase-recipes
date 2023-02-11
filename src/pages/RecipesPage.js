@@ -24,7 +24,7 @@ const RecipesPage = ({
   }, []);
 
   return (
-    <div>
+    <div className="recipe-list-wrapper">
       <div className="recipes-container">
         <CategoryList
           handleCategoryFilter={handleCategoryFilter}
@@ -55,8 +55,12 @@ const RecipesPage = ({
           handleFormatMethod={handleFormatMethod}
         />
       ) : null}
-
-      <ScrollTopButton />
+      <div className="recipe-page-bottom">
+        <button className="ui button" onClick={handleLoadMoreRecipes}>
+          Load More
+        </button>
+        <ScrollTopButton />
+      </div>
     </div>
   );
 };

@@ -15,7 +15,7 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [orderBy, setOrderBy] = useState("publishDateDesc");
-  const [recipesPerPage, setRecipesPerPage] = useState(2);
+  const [recipesPerPage, setRecipesPerPage] = useState(12);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -98,6 +98,20 @@ function App() {
       throw error;
     }
   };
+  
+  const handleRecipesPerPageChange = (event) => {
+    const recipesPerPage = event.target.value;
+
+    setRecipes([]);
+    setRecipesPerPage(recipesPerPage);
+  };
+
+  const handleLoadMoreRecipesClick = () => {
+    const lastRecipe = recipes[recipes.length - 1];
+    const cursorId = lastRecipe.id;
+
+    handleFetchRecipes(cursorId);
+  };
 
   const handleFetchRecipeById = async (id) => {
     const response = await FirestoreService.readSingleDocument("recipes", id);
@@ -114,19 +128,6 @@ function App() {
     alert(`created a recipe with an ID = ${response.id}`);
   };
 
-  const handleRecipesPerPageChange = (event) => {
-    const recipesPerPage = event.target.value;
-
-    setRecipes([]);
-    setRecipesPerPage(recipesPerPage);
-  };
-
-  const handleLoadMoreRecipesClick = () => {
-    const lastRecipe = recipes[recipes.length - 1];
-    const cursorId = lastRecipe.id;
-
-    handleFetchRecipes(cursorId);
-  };
 
   const handleUpdateRecipe = async ( id, updatedRecipe) => {
     await FirestoreService.updateDocument("recipes", id, updatedRecipe);
