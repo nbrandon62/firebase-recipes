@@ -115,10 +115,6 @@
   transition: all 250ms ease-in-out;
 }
 
-.title, .card-list-sort, .sort-all-title{
-  flex: 1;
-}
-
 .title:hover,
 .sort-all-title:hover,
 .sort-by-container .card-list-sort:hover {
@@ -126,5 +122,4 @@
   transform: translate(6px, -7px);
   text-decoration: none;
   color: black;
-
 }

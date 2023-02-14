@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import "../css/category.css";
 
 const CategoryCard = ({ title, color, filter, handleCategoryFilter }) => {
 
   return (
-    <Link to="/recipes">
+
       <div
         className="category-card-container"
         onClick={() => handleCategoryFilter(filter)}
@@ -15,7 +14,7 @@ const CategoryCard = ({ title, color, filter, handleCategoryFilter }) => {
           {title}
         </div>
       </div>
-    </Link>
+
   );
 };
 
