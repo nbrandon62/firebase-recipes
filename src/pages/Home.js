@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import CategoryList from "../components/CategoryList";
 import ImageAndInfoReverse from "../components/ImageAndInforReverse";
 import ImageAndInfo from "../components/ImageAndInfo";
 import Jumbrotron from "../components/Jumbrotron";
@@ -32,7 +31,6 @@ const Home = ({ existingUser }) => {
       <ImageAndInfo  description={imageAndInfoProps.description} />
       <Jumbrotron  header={jumboProps.header}/>
       <ImageAndInfoReverse description={browseProps.description} image={browseProps.image} />
-      {/* <CategoryList /> */}
     </div>
   );
 };

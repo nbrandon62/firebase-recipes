@@ -1,6 +1,7 @@
 import React from "react";
 import CategoryCard from "./CategoryCard";
 import { TbArrowsDownUp } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 import "../css/category.css";
 
@@ -29,7 +30,7 @@ const categories = [
 
 ];
 
-const CategoryList = ({ orderBy, handleOrderBy, handleCategoryFilter }) => {
+const CategoryList = ({ orderBy, recipesPerPage, handleOrderBy, handleCategoryFilter, handleFetchRecipes }) => {
 
   const handleOrderByDate = (event) => {
     if (orderBy === "publishDateDesc") {
@@ -56,7 +57,10 @@ const CategoryList = ({ orderBy, handleOrderBy, handleCategoryFilter }) => {
   return (
     <div className="card-list-container">
       <div className="card-list">
-        <div className="sort-all-title">See All</div>
+        <Link to='/recipes'>
+        
+        <div className="sort-all-title" onClick={(e) => handleFetchRecipes()}>See All</div>
+        </Link>
         {renderedList}
       <div className="sort-by-container">
         {orderBy === "publishDateDesc" ? (

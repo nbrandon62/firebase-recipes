@@ -128,14 +128,6 @@ function App() {
     alert(`created a recipe with an ID = ${response.id}`);
   };
 
-
-  const handleUpdateRecipe = async ( id, updatedRecipe) => {
-    await FirestoreService.updateDocument("recipes", id, updatedRecipe);
-    handleFetchRecipeById(id)
-
-    alert(`successfully updated the recipe with the id: ${id}`);
-  };
-
   const handleDeleteRecipe = async (recipeId) => {
     const deleteConfirmation = window.confirm(
       "Are you sure you want to delete this recipe?"
@@ -201,6 +193,7 @@ function App() {
               handleLoadMoreRecipes={handleLoadMoreRecipesClick}
               handleDeleteRecipe={handleDeleteRecipe}
               handleFetchRecipeById={handleFetchRecipeById}
+              handleFetchRecipes={handleFetchRecipes}
             />
           }
         />

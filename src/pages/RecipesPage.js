@@ -17,7 +17,7 @@ const RecipesPage = ({
   handleFormatMethod,
   handleOrderBy,
   handleLoadMoreRecipes,
-  handleRecipesPerPage,
+  handleFetchRecipes,
 }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,9 +27,11 @@ const RecipesPage = ({
     <div className="recipe-list-wrapper">
       <div className="recipes-container">
         <CategoryList
-          handleCategoryFilter={handleCategoryFilter}
           orderBy={orderBy}
+          recipesPerPage={recipesPerPage}
+          handleCategoryFilter={handleCategoryFilter}
           handleOrderBy={handleOrderBy}
+          handleFetchRecipes={handleFetchRecipes}
         />
       </div>
       {isLoading ? (
@@ -67,20 +69,3 @@ const RecipesPage = ({
 
 export default RecipesPage;
 
-{
-  /* {recipes && recipes.length > 0 ? (
-  <>
-    <label>
-      Recipes per Page:
-      <select value={recipesPerPage} onChange={handleRecipesPerPage}>
-        <option value={1}>1</option>
-        <option value={2}>2</option>
-        <option value={3}>3</option>
-      </select>
-    </label>
-    <div>
-      <button onClick={handleLoadMoreRecipes}>LOAD MORE RECIPES</button>
-    </div>
-  </>
-) : null} */
-}

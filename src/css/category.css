@@ -1,4 +1,4 @@
-@media (max-width: 1158px) {
+@media (max-width: 1400px) {
   .category-card-container .title,
   .card-list .title,
   .sort-by-container .card-list-sort,
@@ -19,18 +19,6 @@
   .card-list-container .sort-all-title {
     color: white;
     border: none;
-  }
-  .card-list-sort {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border: 3px dotted black;
-    padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem; 
-    box-shadow: 0px 0px 0px black;
-    transition: all 250ms ease-in-out;
   }
 }
 @media (max-width: 721px) {
@@ -82,39 +70,17 @@
 .card-list-container {
   background-color: #fcede4;
 }
-.sort-by-container {
-  display: flex;
-}
-.sort-by-icon {
-  margin: 0.5em;
-}
-.card-list-sort {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: 3px dotted black;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
-
 .card-list {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.card-container {
-  height: 25rem;
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
-
-.sort-all-title {
+.sort-by-icon {
+  margin: 0.5em;
+}
+.sort-all-title{
   background-color: rgb(13, 30, 184);
   color: white;
   cursor: pointer;
@@ -125,6 +91,14 @@
   padding-bottom: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;
+}
+
+.card-list-sort{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-top: .7rem;
+  padding-bottom: .7rem; 
 }
 
 .title {
@@ -141,9 +115,16 @@
   transition: all 250ms ease-in-out;
 }
 
-.title:hover, .sort-all-title:hover, .sort-by-container:hover {
+.title, .card-list-sort, .sort-all-title{
+  flex: 1;
+}
+
+.title:hover,
+.sort-all-title:hover,
+.sort-by-container .card-list-sort:hover {
   box-shadow: -6px 7px 0px black;
   transform: translate(6px, -7px);
   text-decoration: none;
   color: black;
+
 }
