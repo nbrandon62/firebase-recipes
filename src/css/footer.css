@@ -5,8 +5,29 @@
     border-top: 5px dashed black;
     background-color: #fcede4;
     font-size: 2rem;
+    margin-bottom: auto;
 }
-.footer-icon{
+@media (max-width: 3000px) {
+    .footer{
+        padding-bottom: 20vh;
+    }
+}
+@media (max-width: 1200px) {
+    .footer{
+        padding: 12.5vh;
+    }
+}
+@media (max-width: 796px) {
+    .footer{
+        padding: 12vh;
+    }
+}
+@media (max-width: 565px) {
+    .footer{
+        padding: 10vh;
+    }
+}
+.footer-icon svg:not(:root){
     font-size: 5rem;
     color: black;
 }
@@ -16,10 +37,12 @@
 }
 .footer-home{
     padding:.6rem;
+    font-size: xx-large;
     cursor: pointer;
     color:black;
 }
 .footer-submit{
+    font-size: xx-large;
     padding:.6rem;
     cursor: pointer;
     color:black;

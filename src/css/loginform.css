@@ -1,10 +1,11 @@
-*, h1{
+*{
     font-family: 'Inter Tight', sans-serif;
-    /* font-size: small; */
+    font-size: medium;
 }
 .ui.button{
     background-color: rgb(68, 0, 255);
     color: white;
+    font-size: 1.4rem;
 }
 .ui.button.logout{
     background-color: rgb(104, 104, 104);

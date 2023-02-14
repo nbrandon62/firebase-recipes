@@ -1,7 +1,7 @@
 .recipe-title{
     text-decoration: underline;
     margin-left: .7rem;
-    margin: calc(2rem - .14285714em) 0 .5rem;
+    margin: calc(2rem - .12285714em) 0 .5rem;
 }
 .recipe-header-container{
     display: flex;
@@ -36,6 +36,7 @@
     text-decoration: none;
     color: black;
 }
+
 .recipe-column {
     float: left;
     width: 50%;

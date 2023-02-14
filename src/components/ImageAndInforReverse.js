@@ -18,7 +18,7 @@ const Title = styled.h1`
 `;
 const Description = styled.p`
   margin: 1rem;
-  font-size: 1rem;
+  font-size: 1.56rem;
   letter-spacing: 1px;
   font-family: "Dosis", sans-serif;
   font-weight: 200;

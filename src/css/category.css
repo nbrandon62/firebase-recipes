@@ -1,4 +1,4 @@
-@media (max-width: 1400px) {
+@media (max-width: 3000px) {
   .category-card-container .title,
   .card-list .title,
   .sort-by-container .card-list-sort,
@@ -99,20 +99,6 @@
   align-items: center;
   padding-top: .7rem;
   padding-bottom: .7rem; 
-}
-
-.title {
-  cursor: pointer;
-  text-decoration: none;
-  color: rgb(0, 0, 0);
-  padding-left: 6rem;
-  padding-right: 6rem;
-  padding-top: 9rem;
-  padding-bottom: 9rem;
-  border-radius: 1%;
-  border-style: solid;
-  box-shadow: 0px 0px 0px black;
-  transition: all 250ms ease-in-out;
 }
 
 .title:hover,

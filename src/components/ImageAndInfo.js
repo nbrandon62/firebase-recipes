@@ -16,7 +16,7 @@ const Title = styled.h1`
   font-family: 'Secular One', sans-serif;
 `;
 const Description = styled.p`
-  font-size: 1rem;
+  font-size: 1.56rem;
   letter-spacing: 1px;
   font-family: 'Dosis', sans-serif;
   font-weight: 200;
