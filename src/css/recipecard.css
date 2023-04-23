@@ -36,11 +36,13 @@
     text-decoration: none;
     color: black;
 }
-
 .recipe-column {
     float: left;
     width: 50%;
     padding: 10px;
+}
+.recipe-column .recipe-method{
+    padding-inline-start: 17px;
 }
 .recipe-column .recipe-method, .recipe-ingredients{
     display: -webkit-box;
