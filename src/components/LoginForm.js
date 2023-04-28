@@ -8,7 +8,7 @@ import ScrollBottomButton from '../components/ScrollBottomButton';
 import "../css/loginform.css";
 import chef3 from "../images/chef3.avif";
 
-const LoginForm = ({ existingUser }) => {
+const LoginForm = ({ existingUser, userId, handleSetUserId }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,6 +19,7 @@ const LoginForm = ({ existingUser }) => {
       await FirebaseAuthService.loginUser(username, password);
       setUsername("");
       setPassword("");
+      handleSetUserId(FirebaseAuthService.auth.currentUser.uid)
     } catch (error) {
       alert(error.message);
     }

@@ -20,14 +20,14 @@ const jumboProps = {
   header: "#cheflife #livelaughlove"
 }
 
-const Home = ({ existingUser }) => {
+const Home = ({ existingUser, handleSetUserId }) => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
   return (
     <div>
-      <LoginForm existingUser={existingUser} />
+      <LoginForm existingUser={existingUser} handleSetUserId={handleSetUserId} />
       <ImageAndInfo  description={imageAndInfoProps.description} />
       <Jumbrotron  header={jumboProps.header}/>
       <ImageAndInfoReverse description={browseProps.description} image={browseProps.image} />

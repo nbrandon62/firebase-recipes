@@ -12,6 +12,7 @@ import SingleRecipePage from "./pages/SingleRecipePage";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
   const [orderBy, setOrderBy] = useState("publishDateDesc");
@@ -20,7 +21,6 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-
     fetchRecipes()
       .then((fetchedRecipes) => {
         setRecipes(fetchedRecipes);
@@ -169,12 +169,12 @@ function App() {
   }
 
   FirebaseAuthService.subscribeToAuthChanges(setUser);
-
+  
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" exact element={<Home existingUser={user} />} />
+        <Route path="/" exact element={<Home existingUser={user} handleSetUserId={setUserId} />} />
         <Route
           path="/recipes"
           exact
