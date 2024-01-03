@@ -6,9 +6,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import NavBar from "./components/NavBar";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import SingleRecipePage from "./pages/SingleRecipePage";
+import './index.css'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -172,7 +173,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <Header />
+      <NavBar />
       <Routes>
         <Route path="/" exact element={<Home existingUser={user} handleSetUserId={setUserId} />} />
         <Route
