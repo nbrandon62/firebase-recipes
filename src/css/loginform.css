@@ -2,7 +2,7 @@
     font-family: 'Inter Tight', sans-serif;
     font-size: medium;
 }
-.ui.button{
+/* .ui.button{
     background-color: rgb(68, 0, 255);
     color: white;
     font-size: 1.4rem;
@@ -10,13 +10,18 @@
 .ui.button.logout{
     background-color: rgb(104, 104, 104);
     color: white;
-}
-.ui.button.create{
+} */
+/* .ui.button.create{
     background-color: rgb(51, 0, 236);
     color: white;
     margin-bottom: .9rem;
+} */
+.logout-button__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 15px;
 }
-
 .login-container{
    margin-left: 4rem;
 }
