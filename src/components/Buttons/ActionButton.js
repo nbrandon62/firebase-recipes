@@ -5,7 +5,6 @@ import './styles/actionbutton.css'
 const ActionButton = ({
   children,
   backgroundColor,
-  className,
   onClick,
   arialabel,
   disabled,
@@ -13,7 +12,7 @@ const ActionButton = ({
   return (
     <button
       style={{ backgroundColor }}
-      className={className}
+      className='button__action'
       onClick={onClick}
       aria-label={arialabel}
       disabled={disabled}
