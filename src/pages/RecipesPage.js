@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { Loader, Dimmer } from "semantic-ui-react";
 
-import ScrollTopButton from "../components/ScrollTopButton";
-import CategoryList from "../components/CategoryList";
-import RecipeList from "../components/RecipeList";
-import "../css/recipelist.css";
+import ScrollTopButton from "../components/elements/ScrollTopButton";
+import CategoryList from "../components/cards/CategoryList";
+import RecipeList from "../components/cards/RecipeList";
+import "../components/cards/styles/recipelist.css";
+import ActionButton from "../components/buttons/ActionButton";
 
 const RecipesPage = ({
   recipes,
@@ -58,9 +59,9 @@ const RecipesPage = ({
         />
       ) : null}
       <div className="recipe-page-bottom">
-        <button className="ui button" onClick={handleLoadMoreRecipes}>
+        <ActionButton className="button__action" onClick={handleLoadMoreRecipes}>
           Load More
-        </button>
+        </ActionButton>
         <ScrollTopButton />
       </div>
     </div>

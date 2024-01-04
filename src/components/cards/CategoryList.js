@@ -2,7 +2,7 @@ import React from "react";
 import CategoryCard from "./CategoryCard";
 import { TbArrowsDownUp } from "react-icons/tb";
 
-import "../css/category.css";
+import "./styles/category.css";
 
 const categories = [
   {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BsPencilSquare } from "react-icons/bs";
 
-import "../css/singlerecipecard.css";
+import "./styles/singlerecipecard.css";
 
 const EditRecipe = ({
   title,

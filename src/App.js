@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import FirebaseAuthService from "./FirebaseAuthService";
-import FirestoreService from "./FirestoreService";
+import FirebaseAuthService from "././utils/firebase/FirebaseAuthService";
+import FirestoreService from "././utils/firebase/FirestoreService";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import Footer from "./components/elements/Footer";
+import NavBar from "./components/elements/NavBar";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import SingleRecipePage from "./pages/SingleRecipePage";
 import './index.css'

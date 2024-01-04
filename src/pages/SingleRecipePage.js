@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import "../css/singlerecipecard.css";
-import FirestoreService from "../FirestoreService";
-import SingleRecipe from "../components/SingleRecipe";
-import EditRecipe from "../components/EditRecipe";
+import "../components/cards/styles/singlerecipecard.css";
+import FirestoreService from "../utils/firebase/FirestoreService";
+import SingleRecipe from "../components/cards/SingleRecipe";
+import EditRecipe from "../components/cards/EditRecipe";
 
 const SingleRecipePage = ({
   user,

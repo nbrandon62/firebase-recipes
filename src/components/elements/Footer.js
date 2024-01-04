@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { TfiYoutube } from "react-icons/tfi";
 
-import "../css/footer.css";
+import "./styles/footer.css";
 
 const Footer = ({ user }) => {
   return (

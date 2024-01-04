@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import { BsPencilSquare } from "react-icons/bs";
 
-import "../css/singlerecipecard.css";
+import "./styles/singlerecipecard.css";
 
 const SingleRecipe = ({
   user,

@@ -1,5 +1,5 @@
 .recipes-list.wrapper{
-    background-color: #fcede4;
+    background-color: var(--pink);
 }
 .recipes-container .title{
     padding-top: 1rem;
@@ -11,7 +11,7 @@
 }
 
 .recipe-list{
-    background-color: #fcede4;
+    background-color: var(--pink);
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
     grid-column-gap: 2rem;
@@ -47,5 +47,8 @@
     display: flex;
     justify-content: space-around;
     padding: 4rem;
-    background-color: #fcede4;
+    background-color: var(--pink);
+}
+.recipe-card-container{
+    background-color: white;
 }

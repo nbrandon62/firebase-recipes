@@ -1,9 +1,15 @@
+*{
+    font-family: 'Inter Tight', sans-serif;
+    font-size: medium;
+}
 body{
     --blue: #4400ff;
     --darkblue: #240088;
+    --yellow: #ffc700;
     --pink: #fcede4;
     --offwhite: #fffcf2;
 
+    background-color: var(--offwhite);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
