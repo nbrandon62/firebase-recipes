@@ -20,3 +20,22 @@ export const cascadeProps = {
   p2: " For the ingredients, enter rough amounts by measurement. Whether it's cups, tablespoons, grams, etc  as long as you separate them by comma the card will reformat it to a bulleted list.",
   p3: "For the method, you can write out a paragraph describing what to do so long as someone with cooking experience can decipher what to do. The card can also reformat the method into a numbered list, you just have to hyphenate each step",
 }
+
+export const categoryOptions = [
+  {
+    value: '0',
+    label: 'Category'
+  },
+  {
+    value: 'vegetable',
+    label: 'Vegetable'
+  },
+  {
+    value: 'protein',
+    label: 'Protein'
+  },
+  {
+    value: 'starch',
+    label: 'Starch'
+  },
+]
