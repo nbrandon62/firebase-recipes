@@ -11,6 +11,8 @@ import {
   jumboProps,
 } from '../utils/staticData'
 import chef3 from '../images/chef3.avif'
+import { Link } from 'react-router-dom'
+import ActionButton from '../components/buttons/ActionButton'
 
 const Home = ({ existingUser, handleSetUserId }) => {
   const [username, setUsername] = useState('')
@@ -79,6 +81,9 @@ const Home = ({ existingUser, handleSetUserId }) => {
           </Grid.Column>
           <Grid.Column>
             <p className='info__body'>{infoProps2.description}</p>
+            <Link to='/recipes'>
+              <ActionButton>Browse Recipes</ActionButton>
+            </Link>
           </Grid.Column>
         </Grid>
       </div>

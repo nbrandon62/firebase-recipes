@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { Loader, Dimmer } from "semantic-ui-react";
+import React, { useEffect } from 'react'
+import { Loader, Dimmer } from 'semantic-ui-react'
 
-import ScrollTopButton from "../components/elements/ScrollTopButton";
-import CategoryList from "../components/cards/CategoryList";
-import RecipeList from "../components/cards/RecipeList";
-import "../components/cards/styles/recipelist.css";
-import ActionButton from "../components/buttons/ActionButton";
+import { sortButtons } from '../utils/staticData'
+import ScrollTopButton from '../components/elements/ScrollTopButton'
+import RecipeList from '../components/cards/RecipeList'
+import '../components/cards/styles/recipelist.css'
+import ActionButton from '../components/buttons/ActionButton'
+import SortButton from '../components/buttons/SortButton'
 
 const RecipesPage = ({
   recipes,
@@ -21,19 +22,27 @@ const RecipesPage = ({
   handleFetchRecipes,
 }) => {
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
+
+  const handleOrderByDate = (event) => {
+    if (orderBy === "publishDateDesc") {
+      handleOrderBy("publishDateAsc");
+    } else {
+      handleOrderBy("publishDateDesc");
+    }
+  };
 
   return (
-    <div className="recipe-list-wrapper">
-      <div className="recipes-container">
-        <CategoryList
-          orderBy={orderBy}
-          recipesPerPage={recipesPerPage}
-          handleCategoryFilter={handleCategoryFilter}
-          handleOrderBy={handleOrderBy}
-          handleFetchRecipes={handleFetchRecipes}
-        />
+    <div className='recipe-list-wrapper'>
+      <div className='sort-button__container'>
+        {sortButtons.map((category) => (
+          <SortButton 
+          key={category.id}
+          category={category}
+          onClick={() => handleCategoryFilter(category.value)}
+          />
+        ))}
       </div>
       {isLoading ? (
         <Dimmer active inverted>
@@ -43,9 +52,9 @@ const RecipesPage = ({
       {!isLoading && recipes && recipes.length === 0 ? (
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#fcede4",
+            display: 'flex',
+            justifyContent: 'center',
+            backgroundColor: '#fcede4',
           }}
         >
           <h1>no recipes found...</h1>
@@ -58,15 +67,17 @@ const RecipesPage = ({
           handleFormatMethod={handleFormatMethod}
         />
       ) : null}
-      <div className="recipe-page-bottom">
-        <ActionButton className="button__action" onClick={handleLoadMoreRecipes}>
+      <div className='recipe-page-bottom'>
+        <ActionButton
+          className='button__action'
+          onClick={handleLoadMoreRecipes}
+        >
           Load More
         </ActionButton>
         <ScrollTopButton />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RecipesPage;
-
+export default RecipesPage
