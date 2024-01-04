@@ -39,3 +39,40 @@ export const categoryOptions = [
     label: 'Starch'
   },
 ]
+
+export  const sortButtons = [
+  {
+    id: 4,
+    //empty string fetches all recipes
+    value: '',
+    label: 'See All',
+    icon: null,
+    backgroundColor: '#FFFDE8',
+    color: '',
+  },
+  {
+    id: 1,
+    value: 'protein',
+    label: 'Proteins',
+    icon: null,
+    backgroundColor: '#FFAF83',
+    color: '',
+  },
+  {
+    id: 2,
+    value: 'vegetable',
+    label: 'Veggies',
+    icon: null,
+    backgroundColor: '#00660A',
+    color: 'white',
+  },
+  {
+    id: 3,
+    value: 'starch',
+    label: 'Starch',
+    icon: null,
+    backgroundColor: '#4400ff',
+    color: 'white',
+  },
+]
+
