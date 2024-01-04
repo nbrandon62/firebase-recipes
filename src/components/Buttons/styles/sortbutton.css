@@ -1,0 +1,11 @@
+.sort-button{
+    border: none;
+    border-radius: 6px;
+    padding: 12px 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    height: 100%
+}

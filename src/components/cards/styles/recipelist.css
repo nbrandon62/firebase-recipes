@@ -1,3 +1,20 @@
+.sort-button__container{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap: 25px;
+    background-color: var(--pink);
+}
+@media screen and (max-width: 768px) {
+    .sort-button__container{
+        flex-direction: column;
+        gap: 4px;
+    }
+    .sort-button{
+        width: 100%
+    }
+}
+
 .recipes-list.wrapper{
     background-color: var(--pink);
 }

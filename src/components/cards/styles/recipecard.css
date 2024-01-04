@@ -34,6 +34,7 @@
     box-shadow: -6px 7px 0px black;
     transform: translate(6px, -7px);
     text-decoration: none;
+    background-color: white;
     color: black;
 }
 .recipe-column {

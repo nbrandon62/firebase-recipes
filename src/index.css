@@ -9,7 +9,7 @@ body{
     --pink: #fcede4;
     --offwhite: #fffcf2;
 
-    background-color: var(--offwhite);
+    background-color: white;
     margin: 0;
     padding: 0;
     overflow-x: hidden;

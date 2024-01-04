@@ -1,3 +1,6 @@
+
+
+
 @media (max-width: 3000px) {
   .category-card-container .title,
   .card-list .title,
@@ -17,7 +20,7 @@
     background-color: rgb(255, 174, 0);
   }
   .card-list-container .sort-all-title {
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
   }
 }
