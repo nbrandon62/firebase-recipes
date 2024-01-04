@@ -53,11 +53,7 @@ const SingleRecipe = ({
             </div>
           </div>
         </div>
-        <div className="sr-button-container">
-          <Link to="/recipes">
-            <button className="ui button">Keep Browsing</button>
-          </Link>
-        </div>
+
       </div>
     </div>
   );

@@ -126,7 +126,7 @@ function App() {
     );
 
     handleFetchRecipes();
-    alert(`created a recipe with an ID = ${response.id}`);
+    alert(`Congrats! You've created a recipe with an ID = ${response.id}`);
   };
 
   const handleDeleteRecipe = async (recipeId) => {
