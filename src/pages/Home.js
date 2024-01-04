@@ -64,7 +64,7 @@ const Home = ({ existingUser, handleSetUserId }) => {
       <div className='info__container'>
         <Grid columns={2} relaxed='very' reversed='computer' stackable>
           <Grid.Column>
-            <div className='z-index__about'> ABOUT</div>
+            <div className='z-index__about'>ABOUT</div>
           </Grid.Column>
           <Grid.Column>
             <p className='info__body'>{infoProps.description}</p>
