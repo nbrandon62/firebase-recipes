@@ -1,19 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import "./styles/header.css";
+import './styles/header.css'
 
 const NavBar = () => {
-
   return (
-    <div className="header-wrapper">
-        <div className="header-container">
-      <Link to="/">
-          <div className="header">#cheflife at home </div>
-      </Link>
-        </div>
+    <div className='header-wrapper'>
+      <div className='navbar-header__container'>
+        <Link to='/'>
+          <h1 className='navbar__title'>#cheflife at home</h1>
+          </Link>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

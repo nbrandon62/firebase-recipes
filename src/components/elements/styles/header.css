@@ -1,18 +1,16 @@
 .header-wrapper{
-    background-color: #fcede4;
+    background-color: var(--pink);
     padding: 4rem;
 }
 
-.header-container{
-    padding: 12px;
+.navbar-header__container{
     display: flex;
     flex-direction: row-reverse;
-    margin-right: 90px;
 }
 
-.header{
+.navbar__title{
     font-family: 'Inter', sans-serif;
     font-size: 2rem;
-    color: #1a21f1;
+    color: var(--blue);
     font-weight: 900;
 }
