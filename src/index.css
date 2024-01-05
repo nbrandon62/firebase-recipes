@@ -1,22 +1,41 @@
-*{
-    font-family: 'Inter Tight', sans-serif;
-    font-size: medium;
-}
-body{
-    --blue: #4400ff;
-    --darkblue: #240088;
-    --yellow: #ffc700;
-    --pink: #fcede4;
-    --offwhite: #fffcf2;
+* {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: medium;
+  box-sizing: border-box;
 
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    min-width: 320px;
-    background: #fff;
-    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    font-size: 14px;
-    line-height: 1.4285em;
-    color: rgba(0,0,0,.87);
+}
+
+body {
+  --blue: #4400ff;
+  --darkblue: #240088;
+  --yellow: #ffc700;
+  --pink: #fcede4;
+  --offwhite: #fffcf2;
+
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-width: 320px;
+  background: #fff;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4285em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+button {
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease,
+    color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease, background 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease,
+    box-shadow 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  will-change: '';
+  -webkit-tap-highlight-color: transparent;
+}
+a, a:hover{
+  color: inherit;
 }

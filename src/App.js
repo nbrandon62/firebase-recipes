@@ -181,6 +181,7 @@ function App() {
           exact
           element={
             <RecipesPage
+              activeFilter={categoryFilter}
               recipes={recipes}
               user={user}
               isLoading={isLoading}
