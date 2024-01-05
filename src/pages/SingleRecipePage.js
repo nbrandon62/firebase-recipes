@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import '../components/cards/styles/singlerecipecard.css'
+import './styles/singlerecipe.css'
 import FirestoreService from '../utils/firebase/FirestoreService'
 import SingleRecipe from '../components/cards/SingleRecipe'
 import EditRecipe from '../components/cards/EditRecipe'
@@ -21,8 +21,6 @@ const SingleRecipePage = ({
   const [formattedDate, setFormattedDate] = useState([])
   const [showEdit, setShowEdit] = useState(false)
 
-  // TODO: secure the read rules per their email to me?
-
   const { id } = useParams()
 
   useEffect(() => {
@@ -39,6 +37,7 @@ const SingleRecipePage = ({
   const fetchSingleRecipe = async () => {
     const response = await handleFetchRecipeById(`${id}`)
     setSelectedRecipe(response)
+
     setFormattedMethod(handleFormatMethod(response.method))
     setFormattedIngredients(handleFormatIngredients(response.ingredients))
     setFormattedDate(handleFormatDate(response.publishDate.seconds))
@@ -48,41 +47,43 @@ const SingleRecipePage = ({
     setShowEdit(!showEdit)
   }
 
-  let content = (
-    <>
-      <SingleRecipe
-        user={user}
-        selectedRecipe={selectedRecipe}
-        formattedMethod={formattedMethod}
-        formattedIngredients={formattedIngredients}
-        formattedDate={formattedDate}
-        handleDeleteRecipe={handleDeleteRecipe}
-        handleShowEditClick={handleShowEditClick}
-      />
-    </>
-  )
-  if (showEdit) {
-    content = (
-      <EditRecipe
-        user={user}
-        title={selectedRecipe.title}
-        date={selectedRecipe.date}
-        ingredients={selectedRecipe.ingredients}
-        method={selectedRecipe.method}
-        handleEditSubmit={handleUpdateRecipe}
-        handleShowEditClick={handleShowEditClick}
-      />
-    )
-  }
-
   return (
     <div>
-      {content}
-        <Link to='/recipes'>
-          <ActionButton className='button__action'>
-            Keep Browsing
-          </ActionButton>
-        </Link>
+      {showEdit ? (
+        <div className='single-recipe-wrapper'>
+          <EditRecipe
+            user={user}
+            title={selectedRecipe.title}
+            date={selectedRecipe.date}
+            ingredients={selectedRecipe.ingredients}
+            method={selectedRecipe.method}
+            handleEditSubmit={handleUpdateRecipe}
+            handleShowEditClick={handleShowEditClick}
+          />
+          <div className='back-button__container'>
+            <Link to='/recipes'>
+              <ActionButton onClick={() => {}}>Save</ActionButton>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div className='single-recipe-wrapper'>
+          <SingleRecipe
+            user={user}
+            selectedRecipe={selectedRecipe}
+            formattedMethod={formattedMethod}
+            formattedIngredients={formattedIngredients}
+            formattedDate={formattedDate}
+            handleDeleteRecipe={handleDeleteRecipe}
+            handleShowEditClick={handleShowEditClick}
+          />
+          <div className='back-button__container'>
+            <Link to='/recipes'>
+              <ActionButton>Back to recipes</ActionButton>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,22 +1,26 @@
-import React from "react";
-import { RecipeCard } from "./RecipeCard";
+import React from 'react'
 
-const RecipeList = ({ recipes, handleFormatIngredients, handleFormatMethod }) => {
-  const renderedList = recipes.map((recipe) => {
-    return (
-      <RecipeCard
-        key={recipe.id}
-        id={recipe.id}
-        title={recipe.title}
-        ingredients={recipe.ingredients}
-        method={recipe.method}
-        publishDate={recipe.publishDate}
-        handleFormatIngredients={handleFormatIngredients}
-        handleFormatMethod={handleFormatMethod}
-      />
-    );
-  });
-  return <div className="recipe-list">{renderedList}</div>;
-};
+import RecipeCard from './RecipeCard'
 
-export default RecipeList;
+const RecipeList = ({
+  recipes,
+  handleFormatIngredients,
+  handleFormatMethod,
+}) => {
+  return (
+    <>
+      {recipes.map((recipe) => (
+        <RecipeCard
+          key={recipe.id}
+          id={recipe.id}
+          title={recipe.title}
+          ingredients={handleFormatIngredients(recipe.ingredients)}
+          method={handleFormatMethod(recipe.method)}
+          publishDate={recipe.publishDate}
+        />
+      ))}
+    </>
+  )
+}
+
+export default RecipeList
