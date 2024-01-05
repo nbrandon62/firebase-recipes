@@ -13,5 +13,6 @@ textarea {
     font-size: 1em;
     line-height: 1.2857;
     resize: vertical;
-    min-height: 9em;
+    min-height: 15em;
+    min-width: 100%;
 }

@@ -1,0 +1,13 @@
+.single-recipe-wrapper{
+    background-color: var(--pink);
+    min-height: 100vh;
+    padding: 16px;
+    display: grid;
+    gap: 25px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.single-recipe-wrapper .back-button__container {
+    grid-column: 1;
+  }

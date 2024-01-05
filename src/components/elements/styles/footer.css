@@ -1,57 +1,29 @@
-.footer{
-    display: flex;
-    justify-content: space-between;
-    padding: 5rem;
-    border-top: 5px dashed black;
-    background-color: #fcede4;
-    font-size: 2rem;
-    margin-bottom: auto;
+.footer {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  padding: 25px;
+  background-color: var(--pink);
+  border-top: 2px dotted black;
+  flex-grow: 1;
 }
-@media (max-width: 3000px) {
-    .footer{
-        padding-bottom: 20vh;
-    }
+.footer-links {
+  display: grid;
 }
-@media (max-width: 1200px) {
-    .footer{
-        padding: 12.5vh;
-    }
+
+.footer-home,
+.footer-submit {
+  font-size: 1.5rem;
 }
-@media (max-width: 796px) {
-    .footer{
-        padding: 12vh;
-    }
+.footer-home:hover,
+.footer-submit:hover {
+  text-decoration: underline;
 }
-@media (max-width: 565px) {
-    .footer{
-        padding: 10vh;
-    }
+.footer-icon svg:not(:root) {
+  font-size: 4rem;
+  color: black;
 }
-.footer-icon svg:not(:root){
-    font-size: 5rem;
-    color: black;
-}
-.footer-icon:hover{
-    text-decoration: none;
-    color: rgb(216, 0, 0);
-}
-.footer-home{
-    padding:.6rem;
-    font-size: xx-large;
-    cursor: pointer;
-    color:black;
-}
-.footer-submit{
-    font-size: xx-large;
-    padding:.6rem;
-    cursor: pointer;
-    color:black;
-}
-.footer-home:hover{
-    text-decoration: underline;
-    color: black;
-}
-.footer-submit:hover{
-    text-decoration: underline;
-    color: black;
+.footer-icon:hover svg:not(:root){
+  text-decoration: none;
+  color: rgb(216, 0, 0);
 }
