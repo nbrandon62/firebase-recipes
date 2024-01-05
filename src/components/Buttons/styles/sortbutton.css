@@ -1,11 +1,35 @@
-.sort-button{
-    border: none;
-    border-radius: 6px;
-    padding: 12px 30px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    border: 1px solid #ddd;
-    height: 100%
+.button__sort {
+  border: 1px solid #9e9e9e;
+  border-radius: 6px;
+  padding: 12px 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  height: 100%;
+}
+.button__sort--active {
+  border: 3px solid rgb(0, 0, 0);
+}
+.button__sort--default:hover {
+  background-color: var(--blue);
+  color: white;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.--all {
+  background-color: var(--offwhite);
+}
+.--veg {
+  background-color: rgb(0, 112, 0);
+  color: white;
+}
+.--protein {
+  background-color: rgb(219, 82, 88);
+  color: white;
+}
+.--starch {
+  background-color: rgb(255, 206, 44);
 }

@@ -2,14 +2,17 @@ import React from 'react'
 import './styles/sortbutton.css'
 
 const SortButton = ({
-  category: { backgroundColor, color, icon, label, value },
-  onClick
+  category: { icon, label, className },
+  onClick,
+  isActive,
 }) => {
+  const buttonClassnames = `button__sort ${
+    isActive ? 'button__sort--active' : 'button__sort--default'
+  } ${className}`
+
   return (
     <button
-      className='sort-button'
-      style={{ backgroundColor, color }}
-      color={color}
+      className={buttonClassnames}
       onClick={onClick}
     >
       {label}
