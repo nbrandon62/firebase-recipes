@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './styles/loginform.css'
-import ScrollBottomButton from '../elements/ScrollBottomButton'
 import Input from './Input'
 import Label from './Label'
 import ActionButton from '../buttons/ActionButton'
+import ScrollButton from '../elements/ScrollButton'
 
 const LoginForm = ({
   existingUser,
@@ -34,7 +34,9 @@ const LoginForm = ({
                 Logout
               </ActionButton>
             </div>
-            <ScrollBottomButton />
+            <div className='scroll-button__down__container'>
+              <ScrollButton direction='down' />
+            </div>
           </form>
         ) : (
           <form className='ui mini form' onSubmit={handleSubmit}>
@@ -66,7 +68,7 @@ const LoginForm = ({
 
             <ActionButton className='button__action'>Login</ActionButton>
 
-            <ScrollBottomButton />
+            <ScrollButton direction='down' />
           </form>
         )}
       </div>

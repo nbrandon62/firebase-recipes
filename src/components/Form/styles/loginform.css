@@ -24,3 +24,11 @@
     width: 90%!important;
 }
 
+.scroll-button__down__container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: 12px;
+    max-width: 600px;
+}
+

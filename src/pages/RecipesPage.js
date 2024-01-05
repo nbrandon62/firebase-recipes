@@ -3,10 +3,10 @@ import { Loader, Dimmer } from 'semantic-ui-react'
 
 import './styles/recipes.css'
 import { sortButtons } from '../utils/staticData'
-import ScrollTopButton from '../components/elements/ScrollTopButton'
 import RecipeList from '../components/cards/RecipeList'
 import ActionButton from '../components/buttons/ActionButton'
 import SortButton from '../components/buttons/SortButton'
+import ScrollButton from '../components/elements/ScrollButton'
 
 
 const RecipesPage = ({
@@ -61,7 +61,7 @@ const RecipesPage = ({
           <ActionButton disabled={isLoading} onClick={handleLoadMoreRecipes}>
             Load More
           </ActionButton>
-          <ScrollTopButton />
+          <ScrollButton direction='up'/>
         </div>
       </div>
     </div>
