@@ -8,15 +8,12 @@ import RecipeList from '../components/cards/RecipeList'
 import ActionButton from '../components/buttons/ActionButton'
 import SortButton from '../components/buttons/SortButton'
 
+
 const RecipesPage = ({
   activeFilter,
   recipes,
   isLoading,
-  orderBy,
   handleCategoryFilter,
-  handleFormatIngredients,
-  handleFormatMethod,
-  handleOrderBy,
   handleLoadMoreRecipes,
 }) => {
   useEffect(() => {
@@ -35,11 +32,13 @@ const RecipesPage = ({
           />
         ))}
       </div>
+
       {isLoading ? (
         <Dimmer active inverted>
           <Loader>Loading...</Loader>
         </Dimmer>
       ) : null}
+
       {!isLoading && recipes && recipes.length === 0 ? (
         <div
           style={{
@@ -51,16 +50,17 @@ const RecipesPage = ({
           <h1>no recipes found...</h1>
         </div>
       ) : null}
+
       <div className='recipe-list__wrapper' role='list'>
         {recipes && recipes.length > 0 ? (
           <RecipeList
             recipes={recipes}
-            handleFormatIngredients={handleFormatIngredients}
-            handleFormatMethod={handleFormatMethod}
           />
         ) : null}
         <div className='recipe-page__buttons__container'>
-          <ActionButton onClick={handleLoadMoreRecipes}>Load More</ActionButton>
+          <ActionButton disabled={isLoading} onClick={handleLoadMoreRecipes}>
+            Load More
+          </ActionButton>
           <ScrollTopButton />
         </div>
       </div>
