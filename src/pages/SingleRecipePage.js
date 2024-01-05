@@ -10,15 +10,10 @@ import ActionButton from '../components/buttons/ActionButton'
 const SingleRecipePage = ({
   user,
   handleFetchRecipeById,
-  handleFormatIngredients,
-  handleFormatMethod,
-  handleFormatDate,
   handleDeleteRecipe,
 }) => {
-  const [selectedRecipe, setSelectedRecipe] = useState('')
-  const [formattedIngredients, setFormattedIngredients] = useState([])
-  const [formattedMethod, setFormattedMethod] = useState([])
-  const [formattedDate, setFormattedDate] = useState([])
+  const [selectedRecipe, setSelectedRecipe] = useState({})
+  const [editRecipe, setEditRecipe] = useState({})
   const [showEdit, setShowEdit] = useState(false)
 
   const { id } = useParams()
@@ -37,10 +32,7 @@ const SingleRecipePage = ({
   const fetchSingleRecipe = async () => {
     const response = await handleFetchRecipeById(`${id}`)
     setSelectedRecipe(response)
-
-    setFormattedMethod(handleFormatMethod(response.method))
-    setFormattedIngredients(handleFormatIngredients(response.ingredients))
-    setFormattedDate(handleFormatDate(response.publishDate.seconds))
+    setEditRecipe(response)
   }
 
   const handleShowEditClick = () => {
@@ -53,17 +45,17 @@ const SingleRecipePage = ({
         <div className='single-recipe-wrapper'>
           <EditRecipe
             user={user}
-            title={selectedRecipe.title}
-            date={selectedRecipe.date}
-            ingredients={selectedRecipe.ingredients}
-            method={selectedRecipe.method}
+            recipe={editRecipe}
+            handleUpdateRecipe={setEditRecipe}
             handleEditSubmit={handleUpdateRecipe}
             handleShowEditClick={handleShowEditClick}
           />
           <div className='back-button__container'>
-            <Link to='/recipes'>
-              <ActionButton onClick={() => {}}>Save</ActionButton>
-            </Link>
+            <ActionButton
+              onClick={() => handleUpdateRecipe(id, editRecipe)}
+            >
+              Save
+            </ActionButton>
           </div>
         </div>
       ) : (
@@ -71,9 +63,6 @@ const SingleRecipePage = ({
           <SingleRecipe
             user={user}
             selectedRecipe={selectedRecipe}
-            formattedMethod={formattedMethod}
-            formattedIngredients={formattedIngredients}
-            formattedDate={formattedDate}
             handleDeleteRecipe={handleDeleteRecipe}
             handleShowEditClick={handleShowEditClick}
           />

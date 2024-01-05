@@ -4,17 +4,23 @@ import { BsPencilSquare } from 'react-icons/bs'
 import { FaTrashAlt } from 'react-icons/fa'
 
 import './styles/singlerecipe.css'
+import {
+  formatIngredients,
+  formatMethod,
+  formatDate,
+} from '../../utils/formatting'
 
 const SingleRecipe = ({
   user,
   selectedRecipe,
-  formattedMethod,
-  formattedIngredients,
-  formattedDate,
   handleDeleteRecipe,
   handleShowEditClick,
 }) => {
   const { id } = useParams()
+
+  const date = formatDate(selectedRecipe.publishDate?.seconds);
+  const method = formatMethod(selectedRecipe?.method);
+  const ingredients = formatIngredients(selectedRecipe?.ingredients);
 
   return (
     <div className='single-recipe__container'>
@@ -35,19 +41,20 @@ const SingleRecipe = ({
           ) : null}
         </div>
       </div>
-      <h2 className='single-recipe__date'>{formattedDate}</h2>
-      
+      <h2 className='single-recipe__date'>
+        {date}
+      </h2>
+
       <div className='body__container'>
         <div className='body__method__container'>
           <h2>method:</h2>
-          <ol>{formattedMethod}</ol>
+          <ol>{method}</ol>
         </div>
         <div className='body__ingredients__container'>
           <h2>ingredients:</h2>
-          {formattedIngredients}
+          {ingredients}
         </div>
       </div>
-
     </div>
   )
 }
