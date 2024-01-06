@@ -13,3 +13,6 @@
 .button__action:hover {
   background-color: var(--darkblue);
 }
+.button__action--disabled{
+  background-color: gray;
+}

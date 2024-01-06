@@ -12,7 +12,11 @@ const ActionButton = ({
   return (
     <button
       style={{ backgroundColor }}
-      className='button__action'
+      className={[
+        'button__action',
+        disabled ? 'button__action--disabled'
+        : ''
+      ].filter(Boolean).join(' ')}
       onClick={onClick}
       aria-label={arialabel}
       disabled={disabled}
