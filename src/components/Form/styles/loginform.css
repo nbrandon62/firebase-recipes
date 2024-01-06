@@ -31,4 +31,14 @@
     margin-top: 12px;
     max-width: 600px;
 }
-
+.login__buttons__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+}
+.login__buttons__container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Grid, Image } from 'semantic-ui-react'
 
 import './styles/home.css'
+import FirebaseAuthService from '../utils/firebase/FirebaseAuthService'
+import ActionButton from '../components/buttons/ActionButton'
+import NoBackgroundBttn from '../components/buttons/NoBackgroundBttn'
+import ScrollButton from '../components/buttons/ScrollButton'
 import LoginForm from '../components/form/LoginForm'
 import Jumbrotron from '../components/elements/Jumbrotron'
-import FirebaseAuthService from '../utils/firebase/FirebaseAuthService'
-import {
-  infoProps,
-  infoProps2,
-  jumboProps,
-} from '../utils/staticData'
+import { infoProps, infoProps2, jumboProps } from '../utils/staticData'
 import chef3 from '../images/chef3.avif'
-import { Link } from 'react-router-dom'
-import ActionButton from '../components/buttons/ActionButton'
 
 const Home = ({ existingUser, handleSetUserId }) => {
   const [username, setUsername] = useState('')
@@ -34,6 +32,7 @@ const Home = ({ existingUser, handleSetUserId }) => {
       alert(error.message)
     }
   }
+
 
   const handleLogout = () => {
     FirebaseAuthService.logoutUser()
