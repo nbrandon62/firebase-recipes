@@ -6,7 +6,7 @@ import { sortButtons } from '../utils/staticData'
 import RecipeList from '../components/cards/RecipeList'
 import ActionButton from '../components/buttons/ActionButton'
 import SortButton from '../components/buttons/SortButton'
-import ScrollButton from '../components/elements/ScrollButton'
+import ScrollButton from '../components/buttons/ScrollButton'
 
 
 const RecipesPage = ({
