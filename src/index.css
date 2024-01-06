@@ -9,7 +9,7 @@ body {
   --blue: #4400ff;
   --darkblue: #240088;
   --yellow: #ffc700;
-  --pink: #fcede4;
+  --pink: #fff3eb;
   --offwhite: #fffcf2;
 
   background-color: white;
@@ -17,7 +17,6 @@ body {
   padding: 0;
   overflow-x: hidden;
   min-width: 320px;
-  background: #fff;
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.4285em;
