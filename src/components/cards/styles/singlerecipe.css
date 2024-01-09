@@ -1,0 +1,47 @@
+.single-recipe__container{
+    background-color: white;
+    border: 1px solid black;
+    padding: 16px;
+    max-width: 1000px;
+}
+.header__container{
+    display: flex;
+    justify-content: space-between;
+}
+.header__title{
+    text-decoration: underline;
+    text-decoration-line: 2px;
+    text-underline-offset: 2px;
+}
+.header__icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+.pencil-icon,
+.trash-icon{
+    color: rgb(0, 0, 0);
+    font-size: 21px;
+    cursor: pointer;
+}
+.single-recipe__date{
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgb(37, 37, 37);
+}
+.body__container{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    column-gap: 25px;
+    margin-top: 25px;
+}
+@media screen and (max-width: 768px) {
+    .body__container{
+        display: flex;
+        flex-direction: column-reverse;
+        row-gap: 25px;
+    }
+}
+

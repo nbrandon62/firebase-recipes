@@ -1,38 +1,93 @@
-import React, { useEffect } from "react";
-import ImageAndInfoReverse from "../components/ImageAndInforReverse";
-import ImageAndInfo from "../components/ImageAndInfo";
-import Jumbrotron from "../components/Jumbrotron";
-import LoginForm from "../components/LoginForm";
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Grid, Image } from 'semantic-ui-react'
 
-import chef2 from '../images/chef2.avif';
-
-const imageAndInfoProps = {
-  description:
-    "The recipes are divided into three categories: protein, starch, and vegetables. The recipes are written by ex chefs, home cooks, and the like. There is no mega scrolling through a life story to get to the ingredients list. There's only the ingredients and the method, just like in a restaurant. Unlike in a restaurant, the recipes are meant to serve as a guide for the dish. Hopefully this website will help you figure out what to cook this week, and the week after that.",
-};
-
-const browseProps = {
-  description: "#cheflife at home is a source of inspiration. I've linked YouTube to the footer of this site because it serves as a great tool for recipe research. My typical order of operations when it comes to researching a new dish to cook at home is: look at [insert food delivery app] to see what I would buy, write down the dishes I would buy and will now cook, go to YouTube to find the yummiest looking recipe. So grab a recipe from this site, look up how to make it, if you don't like what you see, look it up on YouTube and do it your way. It's your world. We're just living in it. ",
-  image: chef2
-}
-
-const jumboProps = {
-  header: "#cheflife #livelaughlove"
-}
+import './styles/home.css'
+import FirebaseAuthService from '../utils/firebase/FirebaseAuthService'
+import ActionButton from '../components/buttons/ActionButton'
+import NoBackgroundBttn from '../components/buttons/NoBackgroundBttn'
+import ScrollButton from '../components/buttons/ScrollButton'
+import LoginForm from '../components/form/LoginForm'
+import Jumbrotron from '../components/elements/Jumbrotron'
+import { infoProps, infoProps2, jumboProps } from '../utils/staticData'
+import chef3 from '../images/chef3.avif'
 
 const Home = ({ existingUser, handleSetUserId }) => {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    try {
+      await FirebaseAuthService.loginUser(username, password)
+      setUsername('')
+      setPassword('')
+      handleSetUserId(FirebaseAuthService.auth.currentUser.uid)
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+
+  const handleLogout = () => {
+    FirebaseAuthService.logoutUser()
+  }
+
   return (
     <div>
-      <LoginForm existingUser={existingUser} handleSetUserId={handleSetUserId} />
-      <ImageAndInfo  description={imageAndInfoProps.description} />
-      <Jumbrotron  header={jumboProps.header}/>
-      <ImageAndInfoReverse description={browseProps.description} image={browseProps.image} />
-    </div>
-  );
-};
+      <div className='login-form__container'>
+        <Grid divided='vertically' stackable columns={2}>
+          <Grid.Row className='container'>
+            <Grid.Column>
+              <Image fluid src={chef3} alt='chef3' />
+            </Grid.Column>
 
-export default Home;
+            <Grid.Column>
+              <LoginForm
+                existingUser={existingUser}
+                handleSetUserId={handleSetUserId}
+                handleSubmit={handleSubmit}
+                handleLogout={handleLogout}
+                username={username}
+                setUsername={setUsername}
+                password={password}
+                setPassword={setPassword}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
+      <div className='info__container'>
+        <Grid columns={2} relaxed='very' reversed='computer' stackable>
+          <Grid.Column>
+            <div className='z-index__about'>ABOUT</div>
+          </Grid.Column>
+          <Grid.Column>
+            <p className='info__body'>{infoProps.description}</p>
+          </Grid.Column>
+        </Grid>
+      </div>
+      <Jumbrotron header={jumboProps.header} />
+      <div className='info__container'>
+        <Grid columns={2} relaxed='very' stackable>
+          <Grid.Column>
+            <Image src={infoProps2.image} alt='' />
+          </Grid.Column>
+          <Grid.Column>
+            <p className='info__body'>{infoProps2.description}</p>
+            <Link to='/recipes'>
+              <ActionButton>Browse Recipes</ActionButton>
+            </Link>
+          </Grid.Column>
+        </Grid>
+      </div>
+    </div>
+  )
+}
+
+export default Home

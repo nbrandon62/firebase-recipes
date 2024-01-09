@@ -1,0 +1,18 @@
+textarea {
+    margin: 0;
+    padding: .78571429em 1em;
+    background: #fff;
+    border: 1px solid rgba(34,36,38,.15);
+    outline: 0;
+    color: rgba(0,0,0,.87);
+    border-radius: .28571429rem;
+    -webkit-box-shadow: 0 0 0 0 transparent inset;
+    box-shadow: 0 0 0 0 transparent inset;
+    -webkit-transition: color .1s ease,border-color .1s ease;
+    transition: color .1s ease,border-color .1s ease;
+    font-size: 1em;
+    line-height: 1.2857;
+    resize: vertical;
+    min-height: 15em;
+    min-width: 100%;
+}

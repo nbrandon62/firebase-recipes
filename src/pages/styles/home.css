@@ -1,0 +1,52 @@
+.info__container {
+  padding: 6rem;
+  height: 100%;
+  display: flex;
+  background-color: var(--offwhite);
+}
+.info__body {
+  font-size: 1.56rem;
+  letter-spacing: 1px;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 200;
+  position: relative;
+}
+
+.z-index__about {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-color: var(--yellow);
+  font-size: 50px;
+  padding: 150px;
+  right: 0px;
+  bottom: 125px;
+  border-radius: 45%;
+}
+
+@media screen and (max-width: 1062px){
+    .z-index__about{
+        display: flex;
+        z-index: 0;
+        position: static;
+        right: 0;
+        bottom: 0;
+    }
+    .info__container{
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .z-index__about{
+        padding: 50px;
+    }
+}
+@media screen and (max-width: 480px){
+    .z-index__about{
+        padding: 20px;
+    }
+}
+

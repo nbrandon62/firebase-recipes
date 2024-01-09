@@ -1,0 +1,39 @@
+.recipe-card__container{
+    cursor: pointer;
+    color: inherit;
+    border: 1px solid black;
+    background-color: white;
+    padding: 12px;
+    transition: all 250ms ease-in-out;
+}
+.recipe-card__container:hover{
+    box-shadow: -6px 7px 0px black;
+    transform: translate(6px, -7px);
+    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+
+.rc__body{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 4px;
+}
+.rc__header{
+    margin-bottom: 12px;
+    font-size: 1.65rem;
+}
+.rc__col-header, .rc__header{
+    text-decoration: underline;
+}
+.rc__col-header{
+    font-size: 1.2rem;
+}
+
+.rc__content, .rc__method, .rc__ingredients{
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

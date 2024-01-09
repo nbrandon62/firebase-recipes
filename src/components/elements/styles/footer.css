@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  padding: 25px;
+  background-color: var(--pink);
+  border-top: 2px dotted black;
+  flex-grow: 1;
+}
+.footer-links {
+  display: grid;
+}
+
+.footer-home,
+.footer-submit {
+  font-size: 1.5rem;
+}
+.footer-home:hover,
+.footer-submit:hover {
+  text-decoration: underline;
+}
+.footer-icon svg:not(:root) {
+  font-size: 4rem;
+  color: black;
+}
+.footer-icon:hover svg:not(:root){
+  text-decoration: none;
+  color: rgb(216, 0, 0);
+}

@@ -1,0 +1,16 @@
+.header-wrapper{
+    background-color: var(--pink);
+    padding: 4rem;
+}
+
+.navbar-header__container{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.navbar__title{
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    color: var(--blue);
+    font-weight: 900;
+}

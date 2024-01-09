@@ -1,195 +1,158 @@
-import { useEffect, useState } from "react";
-import FirebaseAuthService from "./FirebaseAuthService";
-import FirestoreService from "./FirestoreService";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import FirebaseAuthService from '././utils/firebase/FirebaseAuthService'
+import FirestoreService from '././utils/firebase/FirestoreService'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Home from "./pages/Home";
-import RecipesPage from "./pages/RecipesPage";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import CreateRecipePage from "./pages/CreateRecipePage";
-import SingleRecipePage from "./pages/SingleRecipePage";
+import Home from './pages/Home'
+import RecipesPage from './pages/RecipesPage'
+import Footer from './components/elements/Footer'
+import NavBar from './components/elements/NavBar'
+import CreateRecipePage from './pages/CreateRecipePage'
+import SingleRecipePage from './pages/SingleRecipePage'
+import './index.css'
+
+const PAGE_SIZE = 9
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [userId, setUserId] = useState('');
-  const [recipes, setRecipes] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
-  const [orderBy, setOrderBy] = useState("publishDateDesc");
-  const [recipesPerPage, setRecipesPerPage] = useState(9);
-  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState(null)
+  const [userId, setUserId] = useState('')
+  const [recipes, setRecipes] = useState([])
+  const [categoryFilter, setCategoryFilter] = useState('')
+  const [orderBy, setOrderBy] = useState('publishDateDesc')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
     fetchRecipes()
       .then((fetchedRecipes) => {
-        setRecipes(fetchedRecipes);
+        setRecipes(fetchedRecipes)
       })
       .catch((error) => {
-        console.error(error.message);
-        throw error;
+        console.error(error.message)
+        throw error
       })
       .finally(() => {
-        setIsLoading(false);
-      });
-  }, [user, categoryFilter, orderBy, recipesPerPage]);
+        setIsLoading(false)
+      })
+  }, [user, categoryFilter])
 
-  const fetchRecipes = async (cursorId = "") => {
-    const queries = [];
+  const fetchRecipes = async (cursorId = '') => {
+    const queries = []
 
     if (categoryFilter) {
       queries.push({
-        field: "category",
-        condition: "==",
+        field: 'category',
+        condition: '==',
         value: categoryFilter,
-      });
+      })
     }
 
-    const orderByField = "publishDate";
-    let orderByDirection;
+    const orderByField = 'publishDate'
+    let orderByDirection
 
     if (orderBy) {
       switch (orderBy) {
-        case "publishDateAsc":
-          orderByDirection = "asc";
-          break;
-        case "publishDateDesc":
-          orderByDirection = "desc";
-          break;
+        case 'publishDateAsc':
+          orderByDirection = 'asc'
+          break
+        case 'publishDateDesc':
+          orderByDirection = 'desc'
+          break
         default:
-          break;
+          break
       }
     }
 
-    let fetchedRecipes = [];
+    let fetchedRecipes = []
 
     const response = await FirestoreService.readDocuments({
-      collection: "recipes",
+      collection: 'recipes',
       queries: queries,
       orderByField: orderByField,
       orderByDirection: orderByDirection,
-      perPage: recipesPerPage,
+      perPage: PAGE_SIZE,
       cursorId: cursorId,
-    });
+    })
 
     const newRecipes = response.docs.map((recipeDoc) => {
-      const id = recipeDoc.id;
-      const data = recipeDoc.data();
-      data.publishDate = new Date(data.publishDate.seconds * 1000);
+      const id = recipeDoc.id
+      const data = recipeDoc.data()
+      data.publishDate = new Date(data.publishDate.seconds * 1000)
 
-      return { ...data, id };
-    });
+      return { ...data, id }
+    })
 
     if (cursorId) {
-      fetchedRecipes = [...recipes, ...newRecipes];
+      fetchedRecipes = [...recipes, ...newRecipes]
     } else {
-      fetchedRecipes = [...newRecipes];
+      fetchedRecipes = [...newRecipes]
     }
 
-    return fetchedRecipes;
-  };
+    return fetchedRecipes
+  }
 
-  const handleFetchRecipes = async (cursorId = "") => {
+  const handleFetchRecipes = async (cursorId = '') => {
     try {
-      const fetchedRecipes = await fetchRecipes(cursorId);
-      setRecipes(fetchedRecipes);
+      const fetchedRecipes = await fetchRecipes(cursorId)
+      setRecipes(fetchedRecipes)
     } catch (error) {
-      console.error(error.message);
-      throw error;
+      console.error(error.message)
+      throw error
     }
-  };
-  
-  const handleRecipesPerPageChange = (event) => {
-    const recipesPerPage = event.target.value;
-
-    setRecipes([]);
-    setRecipesPerPage(recipesPerPage);
-  };
+  }
 
   const handleLoadMoreRecipesClick = () => {
-    const lastRecipe = recipes[recipes.length - 1];
-    const cursorId = lastRecipe.id;
+    const lastRecipe = recipes[recipes.length - 1]
+    const cursorId = lastRecipe.id
 
-    handleFetchRecipes(cursorId);
-  };
+    handleFetchRecipes(cursorId)
+  }
 
   const handleFetchRecipeById = async (id) => {
-    const response = await FirestoreService.readSingleDocument("recipes", id);
-    return response;
-  };
+    const response = await FirestoreService.readSingleDocument('recipes', id)
+    return response
+  }
 
   const handleAddRecipe = async (newRecipe) => {
-    const response = await FirestoreService.createDocument(
-      "recipes",
-      newRecipe
-    );
+    const response = await FirestoreService.createDocument('recipes', newRecipe)
 
-    handleFetchRecipes();
-    alert(`created a recipe with an ID = ${response.id}`);
-  };
+    handleFetchRecipes()
+    alert(`Congrats! You've created a recipe with an ID = ${response.id}`)
+  }
 
   const handleDeleteRecipe = async (recipeId) => {
     const deleteConfirmation = window.confirm(
-      "Are you sure you want to delete this recipe?"
-    );
+      'Are you sure you want to delete this recipe?'
+    )
 
     if (deleteConfirmation) {
-      await FirestoreService.deleteDocument("recipes", recipeId);
-      handleFetchRecipes();
-      alert(`successfully deleted a recipe with an ID = ${recipeId}`);
+      await FirestoreService.deleteDocument('recipes', recipeId)
+      handleFetchRecipes()
+      alert(`successfully deleted a recipe with an ID = ${recipeId}`)
     }
-  };
-
-  const formatIngredients = (ingredients) => {
-    let ingredientsArr = ingredients.split(",");
-    let ingredientList = ingredientsArr.map((ingredient, index) => {
-      return <li key={index}>{ingredient}</li>;
-    });
-    return ingredientList;
-  };
-
-  const formatMethod = (method) => {
-    let methodArr = method.split("-").splice(1);
-    let methodList = methodArr.map((method, index) => {
-      return <li key={index}>{method}</li>;
-    });
-    return methodList;
-  };
-
-  const toDateTime = (secs) => {
-    var t = new Date(Date.UTC(1970, 0, 1)); // Epoch
-    t.setSeconds(secs);
-
-    const day = t.getUTCDate();
-    const month = t.getUTCMonth() + 1;
-    const year = t.getFullYear();
-    const dateString = `${month}/${day}/${year}`;
-
-    return dateString;
   }
 
-  FirebaseAuthService.subscribeToAuthChanges(setUser);
-  
+  FirebaseAuthService.subscribeToAuthChanges(setUser)
+
   return (
     <BrowserRouter>
-      <Header />
+      <NavBar />
       <Routes>
-        <Route path="/" exact element={<Home existingUser={user} handleSetUserId={setUserId} />} />
         <Route
-          path="/recipes"
+          path='/'
+          exact
+          element={<Home existingUser={user} handleSetUserId={setUserId} />}
+        />
+        <Route
+          path='/recipes'
           exact
           element={
             <RecipesPage
+              activeFilter={categoryFilter}
               recipes={recipes}
               user={user}
               isLoading={isLoading}
-              recipesPerPage={recipesPerPage}
-              orderBy={orderBy}
-              handleFormatIngredients={formatIngredients}
-              handleFormatMethod={formatMethod}
-              handleOrderBy={setOrderBy}
               handleCategoryFilter={setCategoryFilter}
-              handleRecipesPerPage={handleRecipesPerPageChange}
               handleLoadMoreRecipes={handleLoadMoreRecipesClick}
               handleDeleteRecipe={handleDeleteRecipe}
               handleFetchRecipeById={handleFetchRecipeById}
@@ -198,20 +161,17 @@ function App() {
           }
         />
         <Route
-          path="/create-recipes-admin-only"
+          path='/create-recipes-admin-only'
           exact
           element={<CreateRecipePage handleAddRecipe={handleAddRecipe} />}
         />
         <Route
-          path="/recipes/:id"
+          path='/recipes/:id'
           exact
           element={
             <SingleRecipePage
               user={user}
-              handleFormatDate={toDateTime}
               handleFetchRecipeById={handleFetchRecipeById}
-              handleFormatIngredients={formatIngredients}
-              handleFormatMethod={formatMethod}
               handleDeleteRecipe={handleDeleteRecipe}
             />
           }
@@ -219,7 +179,7 @@ function App() {
       </Routes>
       <Footer user={user} />
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

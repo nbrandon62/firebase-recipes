@@ -1,0 +1,44 @@
+.logout-button__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 15px;
+}
+.login-container{
+   margin-left: 4rem;
+}
+.login-form__container{
+    background-color: var(--pink);
+    position: relative;
+}
+  
+.gridded, .ui.grid{
+    margin-bottom: 0;
+    padding-bottom: 4rem;
+
+}
+.ui.fluid.image{
+    width: 100%;
+}
+.ui.mini.form, .ui.form .eight.wide.field {
+    width: 90%!important;
+}
+
+.scroll-button__down__container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: 12px;
+    max-width: 600px;
+}
+.login__buttons__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+}
+.login__buttons__container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

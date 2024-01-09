@@ -1,84 +1,80 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
-import "../css/singlerecipecard.css";
-import FirestoreService from "../FirestoreService";
-import SingleRecipe from "../components/SingleRecipe";
-import EditRecipe from "../components/EditRecipe";
+import './styles/singlerecipe.css'
+import FirestoreService from '../utils/firebase/FirestoreService'
+import SingleRecipe from '../components/cards/SingleRecipe'
+import EditRecipe from '../components/cards/EditRecipe'
+import ActionButton from '../components/buttons/ActionButton'
 
 const SingleRecipePage = ({
   user,
   handleFetchRecipeById,
-  handleFormatIngredients,
-  handleFormatMethod,
-  handleFormatDate,
   handleDeleteRecipe,
 }) => {
-  const [selectedRecipe, setSelectedRecipe] = useState("");
-  const [formattedIngredients, setFormattedIngredients] = useState([]);
-  const [formattedMethod, setFormattedMethod] = useState([]);
-  const [formattedDate, setFormattedDate] = useState([]);
-  const [showEdit, setShowEdit] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState({})
+  const [editRecipe, setEditRecipe] = useState({})
+  const [showEdit, setShowEdit] = useState(false)
 
-  // TODO: secure the read rules per their email to me? 
-
-  const { id } = useParams();
+  const { id } = useParams()
 
   useEffect(() => {
-    fetchSingleRecipe();
-  }, []);
+    fetchSingleRecipe()
+  }, [])
 
-  const handleUpdateRecipe = async ( id, updatedRecipe) => {
-    await FirestoreService.updateDocument("recipes", id, updatedRecipe);
-    fetchSingleRecipe();
-    setShowEdit(!showEdit);
-    alert(`successfully updated the recipe with the id: ${id}`);
-  };
+  const handleUpdateRecipe = async (id, updatedRecipe) => {
+    await FirestoreService.updateDocument('recipes', id, updatedRecipe)
+    fetchSingleRecipe()
+    setShowEdit(!showEdit)
+    alert(`successfully updated the recipe with the id: ${id}`)
+  }
 
   const fetchSingleRecipe = async () => {
-    const response = await handleFetchRecipeById(`${id}`);
-    setSelectedRecipe(response);
-    setFormattedMethod(handleFormatMethod(response.method));
-    setFormattedIngredients(handleFormatIngredients(response.ingredients));
-    setFormattedDate(handleFormatDate(response.publishDate.seconds));
-  };
+    const response = await handleFetchRecipeById(`${id}`)
+    setSelectedRecipe(response)
+    setEditRecipe(response)
+  }
 
   const handleShowEditClick = () => {
-    setShowEdit(!showEdit);
-  };
-
-  let content = (
-    <>
-      <SingleRecipe
-        user={user}
-        selectedRecipe={selectedRecipe}
-        formattedMethod={formattedMethod}
-        formattedIngredients={formattedIngredients}
-        formattedDate={formattedDate}
-        handleDeleteRecipe={handleDeleteRecipe}
-        handleShowEditClick={handleShowEditClick}
-      />
-    </>
-  );
-  if (showEdit) {
-    content = (
-      <EditRecipe
-      user={user}
-      title={selectedRecipe.title}
-      date={selectedRecipe.date}
-      ingredients={selectedRecipe.ingredients}
-      method={selectedRecipe.method}
-      handleEditSubmit={handleUpdateRecipe}
-      handleShowEditClick={handleShowEditClick}
-      />
-    );
+    setShowEdit(!showEdit)
   }
 
   return (
     <div>
-      {content}
+      {showEdit ? (
+        <div className='single-recipe-wrapper'>
+          <EditRecipe
+            user={user}
+            recipe={editRecipe}
+            handleUpdateRecipe={setEditRecipe}
+            handleEditSubmit={handleUpdateRecipe}
+            handleShowEditClick={handleShowEditClick}
+          />
+          <div className='back-button__container'>
+            <ActionButton
+              onClick={() => handleUpdateRecipe(id, editRecipe)}
+            >
+              Save
+            </ActionButton>
+          </div>
+        </div>
+      ) : (
+        <div className='single-recipe-wrapper'>
+          <SingleRecipe
+            user={user}
+            selectedRecipe={selectedRecipe}
+            handleDeleteRecipe={handleDeleteRecipe}
+            handleShowEditClick={handleShowEditClick}
+          />
+          <div className='back-button__container'>
+            <Link to='/recipes'>
+              <ActionButton>Back to recipes</ActionButton>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default SingleRecipePage;
+export default SingleRecipePage
